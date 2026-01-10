@@ -1,0 +1,15 @@
+{
+  "block.repackaged.battery_charger": "Battery Charger",
+  "block.repackaged.fluid_packager": "Fluid Packager",
+  "item.repackaged.battery": "Brass Battery",
+  "item.repackaged.bottle": "Copper Bottle",
+  "item.repackaged.fluid_gauge": "Fluid Gauge",
+  "itemGroup.repackaged": "Create: Repackaged",
+  "stock_inventory_type.repackaged.energy": "Energy",
+  "stock_inventory_type.repackaged.energy.action_add": "Scroll or click to add",
+  "stock_inventory_type.repackaged.energy.action_remove": "Scroll or click to remove",
+  "stock_inventory_type.repackaged.entity": "Entities",
+  "stock_inventory_type.repackaged.entity.search": "Search entities",
+  "stock_inventory_type.repackaged.fluid": "Fluids",
+  "stock_inventory_type.repackaged.fluid.search": "Search fluids"
+}
