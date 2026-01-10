@@ -1,4 +1,4 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;

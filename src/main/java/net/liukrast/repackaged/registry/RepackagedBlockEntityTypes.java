@@ -1,11 +1,11 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import com.simibubi.create.content.logistics.packager.PackagerRenderer;
 import com.simibubi.create.content.logistics.packager.PackagerVisual;
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
-import net.liukrast.repackage.RepackagedConstants;
-import net.liukrast.repackage.content.energy.BatteryChargerBlockEntity;
-import net.liukrast.repackage.content.fluid.FluidPackagerBlockEntity;
+import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.content.energy.BatteryChargerBlockEntity;
+import net.liukrast.repackaged.content.fluid.FluidPackagerBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
@@ -35,7 +35,7 @@ public class RepackagedBlockEntityTypes {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void fmlClientSetup(FMLClientSetupEvent event) {
+    public static void fmlClientSetup(FMLClientSetupEvent ignored) {
         SimpleBlockEntityVisualizer.builder(FLUID_PACKAGER.get())
                 .factory(PackagerVisual::new)
                 .skipVanillaRender(be -> false)

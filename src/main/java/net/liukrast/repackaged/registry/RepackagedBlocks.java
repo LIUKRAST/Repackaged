@@ -1,7 +1,7 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.logistics.packager.SimplePackagerBlock;
-import net.liukrast.repackage.RepackagedConstants;
+import net.liukrast.repackaged.RepackagedConstants;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.SoundType;

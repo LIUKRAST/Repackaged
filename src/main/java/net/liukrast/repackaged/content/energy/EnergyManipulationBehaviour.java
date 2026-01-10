@@ -1,4 +1,4 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 import com.simibubi.create.foundation.blockEntity.SmartBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BehaviourType;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.energy.IEnergyStorage;
 
 public class EnergyManipulationBehaviour extends CapManipulationBehaviourBase<IEnergyStorage, EnergyManipulationBehaviour> {
     public static final BehaviourType<EnergyManipulationBehaviour> OBSERVE = new BehaviourType<>();
-    private BehaviourType<EnergyManipulationBehaviour> behaviourType;
+    private final BehaviourType<EnergyManipulationBehaviour> behaviourType;
 
     public EnergyManipulationBehaviour(SmartBlockEntity be, InterfaceProvider target) {
         this(OBSERVE, be, target);

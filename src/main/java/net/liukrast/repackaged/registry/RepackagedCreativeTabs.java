@@ -1,7 +1,7 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.helper.MinecraftHelpers;
-import net.liukrast.repackage.RepackagedConstants;
+import net.liukrast.repackaged.RepackagedConstants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;

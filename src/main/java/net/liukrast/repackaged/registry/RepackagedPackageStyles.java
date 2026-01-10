@@ -1,9 +1,9 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import com.google.common.collect.ImmutableList;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.liukrast.deployer.lib.logistics.packager.CustomPackageStyle;
-import net.liukrast.repackage.RepackagedConstants;
+import net.liukrast.repackaged.RepackagedConstants;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Unmodifiable;

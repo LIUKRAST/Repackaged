@@ -1,10 +1,10 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.CapManipulationBehaviourBase;
 import net.liukrast.deployer.lib.logistics.packager.AbstractPackagerBlockEntity;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
-import net.liukrast.repackage.registry.RepackagedBlockEntityTypes;
-import net.liukrast.repackage.registry.RepackagedStockInventoryTypes;
+import net.liukrast.repackaged.registry.RepackagedBlockEntityTypes;
+import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.energy.IEnergyStorage;

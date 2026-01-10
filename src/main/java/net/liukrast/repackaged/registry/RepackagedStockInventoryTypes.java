@@ -1,12 +1,12 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.registry.DeployerRegistries;
-import net.liukrast.repackage.RepackagedConstants;
-import net.liukrast.repackage.content.energy.Energy;
-import net.liukrast.repackage.content.energy.EnergyStack;
-import net.liukrast.repackage.content.energy.EnergyStockInventoryType;
-import net.liukrast.repackage.content.fluid.FluidStockInventoryType;
+import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.content.energy.Energy;
+import net.liukrast.repackaged.content.energy.EnergyStack;
+import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
+import net.liukrast.repackaged.content.fluid.FluidStockInventoryType;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.energy.IEnergyStorage;

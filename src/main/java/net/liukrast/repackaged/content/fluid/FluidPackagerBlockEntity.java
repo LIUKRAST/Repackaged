@@ -1,12 +1,12 @@
-package net.liukrast.repackage.content.fluid;
+package net.liukrast.repackaged.content.fluid;
 
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.CapManipulationBehaviourBase;
 import com.simibubi.create.foundation.blockEntity.behaviour.inventory.TankManipulationBehaviour;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.liukrast.deployer.lib.logistics.packager.AbstractPackagerBlockEntity;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
-import net.liukrast.repackage.registry.RepackagedBlockEntityTypes;
-import net.liukrast.repackage.registry.RepackagedStockInventoryTypes;
+import net.liukrast.repackaged.registry.RepackagedBlockEntityTypes;
+import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;

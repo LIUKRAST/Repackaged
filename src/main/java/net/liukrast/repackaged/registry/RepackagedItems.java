@@ -1,10 +1,9 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
-import com.simibubi.create.Create;
 import net.liukrast.deployer.lib.logistics.board.PanelBlockItem;
 import net.liukrast.deployer.lib.logistics.packager.CustomPackageStyle;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
-import net.liukrast.repackage.RepackagedConstants;
+import net.liukrast.repackaged.RepackagedConstants;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;

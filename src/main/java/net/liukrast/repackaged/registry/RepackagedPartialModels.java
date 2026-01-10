@@ -1,7 +1,7 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import net.liukrast.repackage.RepackagedConstants;
+import net.liukrast.repackaged.RepackagedConstants;
 
 public class RepackagedPartialModels {
     private RepackagedPartialModels() {}

@@ -1,4 +1,4 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 public enum Energy {
     INSTANCE

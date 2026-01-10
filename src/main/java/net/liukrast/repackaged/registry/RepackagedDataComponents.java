@@ -1,11 +1,11 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import com.mojang.serialization.Codec;
 import net.liukrast.deployer.lib.helper.MinecraftHelpers;
 import net.liukrast.deployer.lib.logistics.GenericPackageOrderData;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackage.RepackagedConstants;
-import net.liukrast.repackage.content.energy.EnergyStack;
+import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.content.energy.EnergyStack;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.codec.ByteBufCodecs;

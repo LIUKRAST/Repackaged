@@ -1,9 +1,9 @@
-package net.liukrast.repackage.registry;
+package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.logistics.board.PanelType;
 import net.liukrast.deployer.lib.registry.DeployerRegistries;
-import net.liukrast.repackage.RepackagedConstants;
-import net.liukrast.repackage.content.fluid.FluidPanelBehaviour;
+import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.content.fluid.FluidPanelBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

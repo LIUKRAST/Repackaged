@@ -1,7 +1,7 @@
-package net.liukrast.repackage;
+package net.liukrast.repackaged;
 
-import net.liukrast.repackage.content.energy.EnergyStockInventoryType;
-import net.liukrast.repackage.registry.*;
+import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
+import net.liukrast.repackaged.registry.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;

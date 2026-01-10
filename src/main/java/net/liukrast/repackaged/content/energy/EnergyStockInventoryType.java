@@ -1,4 +1,4 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
@@ -10,9 +10,9 @@ import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.logistics.packagerLink.GenericRequestPromise;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackage.RepackagedConstants;
-import net.liukrast.repackage.registry.RepackagedDataComponents;
-import net.liukrast.repackage.registry.RepackagedItems;
+import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.registry.RepackagedDataComponents;
+import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;

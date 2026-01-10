@@ -1,7 +1,7 @@
-package net.liukrast.repackage.content.fluid;
+package net.liukrast.repackaged.content.fluid;
 
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
-import net.liukrast.repackage.registry.RepackagedStockInventoryTypes;
+import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.util.Lazy;
 import net.neoforged.neoforge.fluids.FluidStack;

@@ -1,7 +1,7 @@
-package net.liukrast.repackage.content.energy;
+package net.liukrast.repackaged.content.energy;
 
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
-import net.liukrast.repackage.registry.RepackagedStockInventoryTypes;
+import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.neoforged.neoforge.common.util.Lazy;
 
 public class EnergyInventorySummary extends AbstractInventorySummary<Energy, EnergyStack> {
