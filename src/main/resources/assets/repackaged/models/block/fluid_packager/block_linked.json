@@ -1,0 +1,6 @@
+{
+	"parent": "repackaged:block/fluid_packager/block",
+	"textures": {
+		"0": "repackaged:block/fluid_packager_linked"
+	}
+}
