@@ -13,7 +13,7 @@ public class RepackagedCreativeTabs {
     private static final DeferredRegister<CreativeModeTab> REGISTER = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, RepackagedConstants.MOD_ID);
 
     static {
-        REGISTER.register("main_tab", () -> MinecraftHelpers.createMainTab(RepackagedConstants.MOD_ID, RepackagedItems.STANDARD_BOTTLES.getFirst().toStack())
+        REGISTER.register("main_tab", () -> MinecraftHelpers.CreativeTabs.createMainTab(RepackagedConstants.MOD_ID, RepackagedItems.STANDARD_BOTTLES.getFirst().toStack())
                 .displayItems((pars, out) -> {
                     for(var entry : RepackagedBlocks.ITEMS.getEntries()) {
                         out.accept(entry.get());

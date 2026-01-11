@@ -1,11 +1,12 @@
 package net.liukrast.repackaged.datagen;
 
-import net.liukrast.deployer.lib.helper.MinecraftHelpers;
 import net.liukrast.repackaged.RepackagedConstants;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.BlockModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import static net.liukrast.deployer.lib.helper.MinecraftHelpers.ModelProvider.Blocks.createPanel;
 
 public class RepackagedBlockModelProvider extends BlockModelProvider {
     public RepackagedBlockModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -14,6 +15,6 @@ public class RepackagedBlockModelProvider extends BlockModelProvider {
 
     @Override
     protected void registerModels() {
-        MinecraftHelpers.ModelProvider.createPanel(this, RepackagedItems.FLUID_GAUGE.get());
+        createPanel(this, RepackagedItems.FLUID_GAUGE.get());
     }
 }
