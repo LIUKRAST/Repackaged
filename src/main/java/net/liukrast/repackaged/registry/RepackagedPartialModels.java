@@ -8,8 +8,6 @@ public class RepackagedPartialModels {
 
     public static final PartialModel
             FLUID_PANEL = block("fluid_gauge"),
-
-
             FLUID_PACKAGER_TRAY = block("fluid_packager/tray");
 
 
