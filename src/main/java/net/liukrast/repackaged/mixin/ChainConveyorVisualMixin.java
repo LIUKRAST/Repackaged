@@ -16,20 +16,17 @@ import dev.engine_room.flywheel.api.model.Model;
 import dev.engine_room.flywheel.api.visual.DynamicVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.instance.TransformedInstance;
+import dev.engine_room.flywheel.lib.transform.Translate;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
 import dev.engine_room.flywheel.lib.visual.SimpleTickableVisual;
 import net.liukrast.repackaged.content.fluid.BottleVisual;
-import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.IdentityHashMap;
-import java.util.Map;
+import java.util.*;
 
 @Mixin(ChainConveyorVisual.class)
 public abstract class ChainConveyorVisualMixin extends SingleAxisRotatingVisual<ChainConveyorBlockEntity> implements SimpleDynamicVisual, SimpleTickableVisual {
@@ -63,14 +60,10 @@ public abstract class ChainConveyorVisualMixin extends SingleAxisRotatingVisual<
             TransformedInstance[] original,
             @Local(argsOnly = true) ChainConveyorPackage box,
             @Local(name = "physicsData") ChainConveyorPackage.ChainConveyorPackagePhysicsData physicsData,
-            @Share("post_transform") LocalRef<Map<TransformedInstance, Matrix4f>> postTransforms
+            @Share("post_processor") LocalRef<BottleVisual.PostProcessor> postProcessor
             ) {
-        var addedBuffers = deployer$test.createBuffer(box, physicsData);
-        Map<TransformedInstance, Matrix4f> post = new IdentityHashMap<>();
-        for(var buffer : addedBuffers) {
-            post.put(buffer, new Matrix4f(buffer.pose));
-        }
-        postTransforms.set(post);
+        postProcessor.set(new BottleVisual.PostProcessor());
+        var addedBuffers = deployer$test.createBuffer(box, physicsData, postProcessor.get());
         TransformedInstance[] copy = Arrays.copyOf(original, original.length+addedBuffers.length);
         System.arraycopy(addedBuffers, 0, copy, original.length, addedBuffers.length);
         return copy;
@@ -82,11 +75,21 @@ public abstract class ChainConveyorVisualMixin extends SingleAxisRotatingVisual<
                                 float partialTicks,
                                 CallbackInfo ci,
                                 @Local(name = "buf") TransformedInstance buf,
-                                @Share("post_transform") LocalRef<Map<TransformedInstance, Matrix4f>> postTransforms
+                                @Share("post_processor") LocalRef<BottleVisual.PostProcessor> postProcessor
     ) {
-        var post = postTransforms.get().get(buf);
-        if(post == null) return;
-        buf.mul(post);
+
+    }
+
+    @WrapOperation(method = "setupBoxVisual", at = @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/instance/TransformedInstance;uncenter()Ldev/engine_room/flywheel/lib/transform/Translate;"))
+    private Translate<TransformedInstance> setupBoxVisual(
+            TransformedInstance instance,
+            Operation<Translate<TransformedInstance>> original,
+            @Share("post_processor") LocalRef<BottleVisual.PostProcessor> postProcessor
+    ) {
+        var post = postProcessor.get();
+        if(post == null) return original.call(instance);
+        if(post.consume(instance)) return instance;
+        else return original.call(instance);
     }
 
     @Inject(method = "_delete", at = @At("RETURN"))
