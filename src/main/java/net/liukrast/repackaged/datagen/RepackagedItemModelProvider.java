@@ -6,7 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-import static net.liukrast.deployer.lib.helper.MinecraftHelpers.ModelProvider.Items.createGauge;
+import static net.liukrast.deployer.lib.helper.MinecraftHelpers.ModelProvider.Items.createPanel;
 
 public class RepackagedItemModelProvider extends ItemModelProvider {
     public RepackagedItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -15,7 +15,7 @@ public class RepackagedItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        createGauge(this, RepackagedItems.FLUID_GAUGE.get());
+        createPanel(this, RepackagedItems.FLUID_GAUGE.get());
     }
 
 

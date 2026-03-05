@@ -1,6 +1,8 @@
 package net.liukrast.repackaged;
 
+import com.simibubi.create.api.contraption.BlockMovementChecks;
 import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
+import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
 import net.liukrast.repackaged.datagen.RepackagedBlockModelProvider;
 import net.liukrast.repackaged.datagen.RepackagedDatapackBuiltinEntriesProvider;
 import net.liukrast.repackaged.datagen.RepackagedItemModelProvider;
@@ -8,6 +10,7 @@ import net.liukrast.repackaged.datagen.RepackagedLanguageProvider;
 import net.liukrast.repackaged.datagen.loot.RepackagedBlockLootSubProvider;
 import net.liukrast.repackaged.datagen.tags.RepackagedBlockTagsProvider;
 import net.liukrast.repackaged.registry.*;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -40,6 +43,19 @@ public class Repackaged {
         RepackagedPackageStyles.init();
         RepackagedCreativeTabs.init(eventBus);
         RepackagedPanels.init(eventBus);
+        RepackagedArmInteractionPointTypes.init(eventBus);
+
+        BlockMovementChecks.registerAttachedCheck((state, level, pos, dir) -> {
+            var block = RepackagedBlocks.PACKAGE_SHELF.get();
+            if(!state.is(block)) return BlockMovementChecks.CheckResult.PASS;
+            var state1 = level.getBlockState(pos.relative(dir));
+            if(!state1.is(block)) return BlockMovementChecks.CheckResult.PASS;
+            if(dir == Direction.DOWN && state1.getValue(PackageShelfBlock.SHAPE) != PackageShelfBlock.Shape.TOP)
+                return BlockMovementChecks.CheckResult.SUCCESS;
+            if(dir == Direction.UP && state1.getValue(PackageShelfBlock.SHAPE) != PackageShelfBlock.Shape.BOTTOM)
+                return BlockMovementChecks.CheckResult.SUCCESS;
+            return BlockMovementChecks.CheckResult.PASS;
+        });
     }
 
     @SubscribeEvent
@@ -56,8 +72,6 @@ public class Repackaged {
                 (be, context) -> be.inventory
         );
 
-        //TODO: Remove this to block other mods from extracting energy directly from batteries,
-        // without a battery charger
         event.registerItem(
                 Capabilities.EnergyStorage.ITEM,
                 (stack, $) -> new ComponentEnergyStorage(stack, RepackagedDataComponents.BATTERY_CONTENTS.get(), EnergyStockInventoryType.MAX_BATTERY_ENERGY, EnergyStockInventoryType.MAX_BATTERY_ENERGY, EnergyStockInventoryType.MAX_BATTERY_ENERGY),

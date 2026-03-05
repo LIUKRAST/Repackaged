@@ -1,5 +1,6 @@
 package net.liukrast.repackaged.registry;
 
+import net.liukrast.deployer.lib.logistics.board.LogisticallyLinkedPanelBlockItem;
 import net.liukrast.deployer.lib.logistics.board.PanelBlockItem;
 import net.liukrast.deployer.lib.logistics.packager.CustomPackageStyle;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
@@ -10,6 +11,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class RepackagedItems {
     private RepackagedItems() {}
@@ -21,7 +23,11 @@ public class RepackagedItems {
     public static final List<DeferredItem<GenericPackageItem>> RARE_BOTTLES;
     public static final List<DeferredItem<GenericPackageItem>> RARE_BATTERIES;
 
-    public static final DeferredItem<PanelBlockItem> FLUID_GAUGE = REGISTER.register("fluid_gauge", () -> new PanelBlockItem(RepackagedPanels.FLUID::get, new Item.Properties()));
+    public static Stream<DeferredItem<GenericPackageItem>> bottleStream() {
+        return Stream.concat(STANDARD_BOTTLES.stream(), RARE_BOTTLES.stream());
+    }
+
+    public static final DeferredItem<PanelBlockItem> FLUID_GAUGE = REGISTER.register("fluid_gauge", () -> new LogisticallyLinkedPanelBlockItem(RepackagedPanels.FLUID::get, new Item.Properties()));
 
     static {
         STANDARD_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()

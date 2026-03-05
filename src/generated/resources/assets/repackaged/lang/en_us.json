@@ -1,6 +1,7 @@
 {
   "block.repackaged.battery_charger": "Battery Charger",
   "block.repackaged.fluid_packager": "Fluid Packager",
+  "block.repackaged.package_shelf": "Package Shelf",
   "item.repackaged.battery": "Brass Battery",
   "item.repackaged.bottle": "Copper Bottle",
   "item.repackaged.fluid_gauge": "Fluid Gauge",

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.simibubi.create.content.logistics.BigItemStack;
 import com.simibubi.create.content.logistics.filter.FilterItemStack;
+import it.unimi.dsi.fastutil.Hash;
 import net.liukrast.deployer.lib.logistics.GenericPackageOrderData;
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
@@ -41,7 +42,33 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
 
     public static final int MAX_BATTERY_ENERGY = 500_000;
 
+    public static final Hash.Strategy<? super EnergyStack> ENERGY_AMOUNT =
+            new Hash.Strategy<>() {
+
+                @Override
+                public int hashCode(EnergyStack stack) {
+                    if (stack == null || stack.isEmpty()) {
+                        return 0;
+                    }
+                    return Integer.hashCode(stack.getAmount());
+                }
+
+                @Override
+                public boolean equals(EnergyStack a, EnergyStack b) {
+                    if (a == b) return true;
+                    if (a == null || b == null) return false;
+                    if (a.isEmpty() != b.isEmpty()) return false;
+
+                    return a.getAmount() == b.getAmount();
+                }
+            };
+
     private static final IValueHandler<Energy, EnergyStack, IEnergyStorage> VALUE_HANDLER = new IValueHandler<>(EnergyStack.CODEC, EnergyStack.STREAM_CODEC) {
+
+        @Override
+        public Hash.Strategy<? super EnergyStack> hashStrategy() {
+            return ENERGY_AMOUNT;
+        }
 
         @Override
         public Energy fromValue(EnergyStack key) {

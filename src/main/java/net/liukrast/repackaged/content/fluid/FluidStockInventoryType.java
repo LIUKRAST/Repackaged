@@ -6,7 +6,10 @@ import com.mojang.serialization.Codec;
 import com.simibubi.create.content.logistics.BigItemStack;
 import com.simibubi.create.content.logistics.filter.FilterItemStack;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
-import net.liukrast.deployer.lib.helper.GuiRenderingHelper;
+import com.simibubi.create.foundation.gui.widget.ScrollInput;
+import com.simibubi.create.foundation.utility.CreateLang;
+import it.unimi.dsi.fastutil.Hash;
+import net.liukrast.deployer.lib.helper.GuiRenderingHelpers;
 import net.liukrast.deployer.lib.logistics.GenericPackageOrderData;
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
@@ -23,6 +26,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,6 +37,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidStackLinkedSet;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
@@ -49,6 +54,11 @@ import static com.simibubi.create.foundation.gui.AllGuiTextures.NUMBERS;
 public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStack, IFluidHandler> {
     private static final Codec<GenericRequestPromise<FluidStack>> REQUEST_CODEC =  GenericRequestPromise.simpleCodec(FluidStack.CODEC);
     private static final IValueHandler<Fluid, FluidStack, IFluidHandler> VALUE_HANDLER = new IValueHandler<>(FluidStack.CODEC, FluidStack.STREAM_CODEC) {
+
+        @Override
+        public Hash.Strategy<? super FluidStack> hashStrategy() {
+            return FluidStackLinkedSet.TYPE_AND_COMPONENTS;
+        }
 
         @Override
         public Fluid fromValue(FluidStack key) {
@@ -295,7 +305,7 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
             ms.scale((float) 1, (float) 1, (float) 1);
             ms.scale(scaleFromHover, scaleFromHover, scaleFromHover);
             ms.translate(-18 / 2.0, -18 / 2.0, 0);
-            if(customCount != 0) GuiRenderingHelper.renderFluid(graphics, entry, 0, 0, 16,16);
+            if(customCount != 0) GuiRenderingHelpers.renderFluid(graphics, entry, 0, 0, 16,16);
             ms.popPose();
 
             ms.pushPose();
@@ -360,6 +370,99 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
 
         }
 
+        @Override
+        public void renderGaugeSlotInput(GuiGraphics graphics, FluidStack stack, int mouseX, int mouseY, int x, int y, boolean restocker, Font font) {
+            if(!stack.isEmpty()) GuiRenderingHelpers.renderFluid(graphics, stack.copyWithAmount(1000), x+1, y+1, 14,14);
+            if(stack.getAmount() > 999) {
+                var ms = graphics.pose();
+                ms.pushPose();
+                String s = String.valueOf(stack.getAmount()/1000);
+                ms.translate(0.0F, 0.0F, 200.0F);
+                graphics.drawString(font, s, x + 19 - 2 - font.width(s), y + 6 + 3, 16777215, true);
+                ms.popPose();
+            }
+            if(mouseX < x - 2 || mouseX >= x - 2 + 20 || mouseY < y -2 || mouseY >= y -2 + 20)
+                return;
+
+            if(stack.isEmpty()) {
+                graphics.renderComponentTooltip(font, List.of(CreateLang.translate("gui.factory_panel.empty_panel")
+                                        .color(ScrollInput.HEADER_RGB)
+                                        .component(),
+                                CreateLang.translate("gui.factory_panel.left_click_disconnect")
+                                        .style(ChatFormatting.DARK_GRAY)
+                                        .style(ChatFormatting.ITALIC)
+                                        .component()),
+                        mouseX, mouseY);
+                return;
+            }
+
+            if(restocker) {
+                graphics.renderComponentTooltip(font,
+                        List.of(CreateLang.translate("gui.factory_panel.sending_item", CreateLang.builder().add(stack.getHoverName().copy())
+                                                .string())
+                                        .color(ScrollInput.HEADER_RGB)
+                                        .component(),
+                                CreateLang.translate("gui.factory_panel.sending_item_tip")
+                                        .style(ChatFormatting.GRAY)
+                                        .component(),
+                                CreateLang.translate("gui.factory_panel.sending_item_tip_1")
+                                        .style(ChatFormatting.GRAY)
+                                        .component()),
+                        mouseX, mouseY);
+                return;
+            }
+
+            graphics.renderComponentTooltip(font,
+                    List.of(CreateLang.translate("gui.factory_panel.sending_item", CreateLang.builder().add(stack.getHoverName().copy())
+                                            .add(CreateLang.text(" x" + stack.getAmount() + "Mb"))
+                                            .string())
+                                    .color(ScrollInput.HEADER_RGB)
+                                    .component(),
+                            CreateLang.translate("gui.factory_panel.scroll_to_change_amount")
+                                    .style(ChatFormatting.DARK_GRAY)
+                                    .style(ChatFormatting.ITALIC)
+                                    .component(),
+                            CreateLang.translate("gui.factory_panel.left_click_disconnect")
+                                    .style(ChatFormatting.DARK_GRAY)
+                                    .style(ChatFormatting.ITALIC)
+                                    .component()),
+                    mouseX, mouseY);
+        }
+
+        @Override
+        public void renderGaugeSlotOutput(GuiGraphics graphics, FluidStack stack, int mouseX, int mouseY, int x, int y, Font font) {
+            if(!stack.isEmpty()) GuiRenderingHelpers.renderFluid(graphics, stack.copyWithAmount(1000), x+1, y+1, 14,14);
+            if(stack.getAmount() > 999) {
+                var ms = graphics.pose();
+                ms.pushPose();
+                String s = String.valueOf(stack.getAmount()/1000);
+                ms.translate(0.0F, 0.0F, 200.0F);
+                graphics.drawString(font, s, x + 19 - 2 - font.width(s), y + 6 + 3, 16777215, true);
+                ms.popPose();
+            }
+            if (mouseX >= x - 1 && mouseX < x - 1 + 18 && mouseY >= y - 1
+                    && mouseY < y - 1 + 18) {
+                MutableComponent c1 = CreateLang
+                        .translate("gui.factory_panel.expected_output", CreateLang.builder().add(stack.getHoverName().copy())
+                                .add(CreateLang.text(" x" + stack.getAmount() + "Mb"))
+                                .string())
+                        .color(ScrollInput.HEADER_RGB)
+                        .component();
+                MutableComponent c2 = CreateLang.translate("gui.factory_panel.expected_output_tip")
+                        .style(ChatFormatting.GRAY)
+                        .component();
+                MutableComponent c3 = CreateLang.translate("gui.factory_panel.expected_output_tip_1")
+                        .style(ChatFormatting.GRAY)
+                        .component();
+                MutableComponent c4 = CreateLang.translate("gui.factory_panel.expected_output_tip_2")
+                        .style(ChatFormatting.DARK_GRAY)
+                        .style(ChatFormatting.ITALIC)
+                        .component();
+                graphics.renderComponentTooltip(font, List.of(c1, c2, c3, c4),
+                        mouseX, mouseY);
+            }
+        }
+
         private static final ResourceLocation TEXTURE = RepackagedConstants.id("textures/gui/fluid_stock_inventory.png");
 
         @Override
@@ -380,7 +483,7 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
 
         @Override
         public void renderTooltip(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks, FluidStack entry, Font font, boolean isOrder) {
-            GuiRenderingHelper.renderTooltip(graphics, entry, mouseX, mouseY, font);
+            GuiRenderingHelpers.renderTooltip(graphics, entry, mouseX, mouseY, font);
         }
 
         @Override
@@ -388,8 +491,8 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
             int visibleNames = 0;
             int skippedNames = 0;
             for(int i = 0; i < handler.getTanks(); i++) {
-                FluidStack fluidStack = handler.getFluidInTank(i);
-                if(fluidStack.isEmpty())
+                FluidStack BigFluidStack = handler.getFluidInTank(i);
+                if(BigFluidStack.isEmpty())
                     continue;
                 if(visibleNames > 2) {
                     skippedNames++;
@@ -397,9 +500,9 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
                 }
 
                 visibleNames++;
-                tooltipComponents.add(fluidStack.getHoverName()
+                tooltipComponents.add(BigFluidStack.getHoverName()
                         .copy()
-                        .append(" x" + fluidStack.getAmount() + "Mb")
+                        .append(" x" + BigFluidStack.getAmount() + "Mb")
                         .withStyle(ChatFormatting.GRAY));
             }
 

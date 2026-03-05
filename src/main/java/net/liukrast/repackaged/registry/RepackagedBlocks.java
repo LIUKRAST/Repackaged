@@ -2,6 +2,7 @@ package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.logistics.packager.SimplePackagerBlock;
 import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.SoundType;
@@ -38,13 +39,17 @@ public class RepackagedBlocks {
             Capabilities.EnergyStorage.BLOCK
     ));
 
+    public static final DeferredBlock<PackageShelfBlock> PACKAGE_SHELF = BLOCKS.register("package_shelf", () -> new PackageShelfBlock(BlockBehaviour.Properties.of().noOcclusion()));
+
     static {
         ITEMS.register("fluid_packager", () -> new BlockItem(FLUID_PACKAGER.get(), new Item.Properties()));
         ITEMS.register("battery_charger", () -> new BlockItem(BATTERY_CHARGER.get(), new Item.Properties()));
+        ITEMS.register("package_shelf", () -> new BlockItem(PACKAGE_SHELF.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
         ITEMS.register(eventBus);
     }
+
 }
