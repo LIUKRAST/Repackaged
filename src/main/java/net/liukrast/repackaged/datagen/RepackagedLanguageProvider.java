@@ -35,9 +35,9 @@ public class RepackagedLanguageProvider extends LanguageProvider {
         RepackagedConstants.getElementEntries(DeployerRegistries.STOCK_INVENTORY)
                 .forEach(e -> {
 
-                    if(e.getValue().packageHandler().shouldRenderSearchBar()) {
+                    /*if(e.getValue().packageHandler().shouldRenderSearchBar()) {
 
-                    }
+                    }*/
                 });
         addReplaced("stock_inventory_type.%s.fluid", "Fluids");
         addReplaced("stock_inventory_type.%s.fluid.search", "Search fluids");

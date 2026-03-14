@@ -76,11 +76,6 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
         }
 
         @Override
-        public boolean equalsIgnoreCount(EnergyStack a, EnergyStack b) {
-            return true;
-        }
-
-        @Override
         public boolean test(FilterItemStack filter, Level level, EnergyStack value) {
             return true;
         }
@@ -239,7 +234,7 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
             return RepackagedDataComponents.BATTERY_ORDER_CONTEXT.get();
         }
 
-        @Override
+        /*@Override
         public int clickAmount(boolean ctrlDown, boolean shiftDown, boolean altDown) {
             return ctrlDown ? 100 : shiftDown ? 1000 : altDown ? 1 : 10;
         }
@@ -345,29 +340,19 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
                 x0+=w-1;
             }
 
-        }
+        }*/
 
         private static final Component ACTION_REMOVE = Component.translatable("stock_inventory_type.repackaged.energy.action_remove");
         private static final Component ACTION_ADD = Component.translatable("stock_inventory_type.repackaged.energy.action_add");
 
-        @Override
+        /*@Override
         public void renderTooltip(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks, EnergyStack entry, Font font, boolean isOrder) {
             graphics.renderTooltip(font, isOrder ? ACTION_REMOVE : ACTION_ADD, mouseX, mouseY);
-        }
+        }*/
 
         @Override
         public void appendHoverText(ItemStack stack, Item.TooltipContext tooltipContext, List<Component> tooltipComponents, TooltipFlag tooltipFlag, IEnergyStorage handler) {
             tooltipComponents.add(Component.literal(handler.getEnergyStored() + "⚡").withStyle(ChatFormatting.GRAY));
-        }
-
-        @Override
-        public int getColWidth() {
-            return 20*9;
-        }
-
-        @Override
-        public int getRowHeight() {
-            return 20*4;
         }
     };
 
@@ -392,11 +377,6 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
     }
 
     private static final ItemStack ICON = Items.LIGHTNING_ROD.getDefaultInstance();
-
-    @Override
-    public @NotNull ItemStack getIcon() {
-        return ICON;
-    }
 
     @Override
     public BlockCapability<IEnergyStorage, @Nullable Direction> getBlockCapability() {
