@@ -50,7 +50,7 @@ public class RepackagedBlocks {
     static {
         ITEMS.register("fluid_packager", () -> new BlockItem(FLUID_PACKAGER.get(), new Item.Properties()));
         ITEMS.register("battery_charger", () -> new BlockItem(BATTERY_CHARGER.get(), new Item.Properties()));
-        ITEMS.register("package_shelf", () -> new BlockItem(PACKAGE_SHELF.get(), new Item.Properties()));
+        ITEMS.register("package_shelf", () -> RepackagedConstants.wrapWithShiftSummary(new BlockItem(PACKAGE_SHELF.get(), new Item.Properties())));
     }
 
     public static void register(IEventBus eventBus) {

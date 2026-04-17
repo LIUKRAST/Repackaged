@@ -54,6 +54,8 @@ public class RepackagedLanguageProvider extends LanguageProvider {
         addPrefixed("logistics.shelf.connected", "Connected shelves");
         addPrefixed("logistics.shelf.click_to_separate", "Click to separate shelves");
         addPrefixed("logistics.shelf.click_to_merge", "Click to merge shelves");
+
+        addReplaced("block.%s.package_shelf.tooltip.summary", "Works like a repackager, but exports packages of different types (fluid/energy). It puts all the output packages in the shelf so that you can extract them later on");
     }
 
     private void createPonder(Item item, String header, String... tooltips) {

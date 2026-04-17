@@ -2,6 +2,7 @@
   "block.repackaged.battery_charger": "Battery Charger",
   "block.repackaged.fluid_packager": "Fluid Packager",
   "block.repackaged.package_shelf": "Package Shelf",
+  "block.repackaged.package_shelf.tooltip.summary": "Works like a repackager, but exports packages of different types (fluid/energy). It puts all the output packages in the shelf so that you can extract them later on",
   "item.repackaged.battery": "Brass Battery",
   "item.repackaged.bottle": "Copper Bottle",
   "item.repackaged.energy_gauge": "Energy Gauge",
