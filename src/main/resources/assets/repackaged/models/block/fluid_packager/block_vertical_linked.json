@@ -1,6 +1,6 @@
 {
 	"parent": "repackaged:block/fluid_packager/block_vertical",
 	"textures": {
-		"0": "repackaged:block/fluid_packaged_linked"
+		"0": "repackaged:block/fluid_packager_linked"
 	}
 }
