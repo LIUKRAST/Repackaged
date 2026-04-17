@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "create:factory_gauge"
+    },
+    {
+      "item": "create:brass_sheet"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "repackaged:energy_gauge"
+  }
+}

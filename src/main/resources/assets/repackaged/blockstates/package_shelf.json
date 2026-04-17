@@ -2,7 +2,7 @@
   "multipart": [
     {
       "when": {
-        "shape": "bottom|single"
+        "type": "bottom"
       },
       "apply": {
         "model": "repackaged:block/package_shelf/single"
@@ -10,7 +10,7 @@
     },
     {
       "when": {
-        "shape": "bottom|middle|top"
+        "type": "bottom|middle|top"
       },
       "apply": {
         "model": "repackaged:block/package_shelf/middle"
@@ -18,22 +18,10 @@
     },
     {
       "when": {
-        "shape": "top"
+        "type": "top"
       },
       "apply": {
         "model": "repackaged:block/package_shelf/top"
-      }
-    },
-    {
-      "when": {
-        "AND": [
-          {"shape": "bottom|single"},
-          {"facing": "north"}
-        ]
-      },
-      "apply": {
-        "model": "repackaged:block/package_shelf/connector",
-        "y": 0
       }
     }
   ]

@@ -50,6 +50,10 @@ public class RepackagedLanguageProvider extends LanguageProvider {
 
         addReplaced("stock_inventory_type.%s.energy.action_add", "Scroll or click to add");
         addReplaced("stock_inventory_type.%s.energy.action_remove", "Scroll or click to remove");
+
+        addPrefixed("logistics.shelf.connected", "Connected shelves");
+        addPrefixed("logistics.shelf.click_to_separate", "Click to separate shelves");
+        addPrefixed("logistics.shelf.click_to_merge", "Click to merge shelves");
     }
 
     private void createPonder(Item item, String header, String... tooltips) {

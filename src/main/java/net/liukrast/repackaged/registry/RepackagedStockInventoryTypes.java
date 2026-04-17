@@ -18,12 +18,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class RepackagedStockInventoryTypes {
     private RepackagedStockInventoryTypes() {}
 
-    public static final DeferredRegister<StockInventoryType<?,?,?>> STOCK_INVENTORY_TYPES = DeferredRegister.create(DeployerRegistries.STOCK_INVENTORY, RepackagedConstants.MOD_ID);
+    private static final DeferredRegister<StockInventoryType<?,?,?>> REGISTER = DeferredRegister.create(DeployerRegistries.STOCK_INVENTORY, RepackagedConstants.MOD_ID);
 
-    public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Fluid, FluidStack, IFluidHandler>> FLUID = STOCK_INVENTORY_TYPES.register("fluid", FluidStockInventoryType::new);
-    public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Energy, EnergyStack, IEnergyStorage>> ENERGY = STOCK_INVENTORY_TYPES.register("energy", EnergyStockInventoryType::new);
+    public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Fluid, FluidStack, IFluidHandler>> FLUID = REGISTER.register("fluid", FluidStockInventoryType::new);
+    public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Energy, EnergyStack, IEnergyStorage>> ENERGY = REGISTER.register("energy", EnergyStockInventoryType::new);
 
     public static void register(IEventBus eventBus) {
-        STOCK_INVENTORY_TYPES.register(eventBus);
+        REGISTER.register(eventBus);
     }
 }

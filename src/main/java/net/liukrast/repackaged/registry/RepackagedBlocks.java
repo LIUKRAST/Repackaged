@@ -1,5 +1,6 @@
 package net.liukrast.repackaged.registry;
 
+import com.simibubi.create.foundation.data.SharedProperties;
 import net.liukrast.deployer.lib.logistics.packager.SimplePackagerBlock;
 import net.liukrast.repackaged.RepackagedConstants;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
@@ -21,7 +22,7 @@ public class RepackagedBlocks {
     private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(RepackagedConstants.MOD_ID);
     protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RepackagedConstants.MOD_ID);
 
-    public static final DeferredBlock<SimplePackagerBlock> FLUID_PACKAGER = BLOCKS.register("fluid_packager", () -> new SimplePackagerBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<SimplePackagerBlock> FLUID_PACKAGER = BLOCKS.register("fluid_packager", () -> new SimplePackagerBlock(BlockBehaviour.Properties.ofFullCopy(SharedProperties.softMetal())
             .noOcclusion()
             .isRedstoneConductor(($1, $2, $3) -> false)
             .mapColor(MapColor.TERRACOTTA_ORANGE)
@@ -30,7 +31,7 @@ public class RepackagedBlocks {
             Capabilities.FluidHandler.BLOCK,
             Optional.of(RepackagedPartialModels.FLUID_PACKAGER_TRAY)
     ));
-    public static final DeferredBlock<SimplePackagerBlock> BATTERY_CHARGER = BLOCKS.register("battery_charger", () -> new SimplePackagerBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<SimplePackagerBlock> BATTERY_CHARGER = BLOCKS.register("battery_charger", () -> new SimplePackagerBlock(BlockBehaviour.Properties.ofFullCopy(SharedProperties.softMetal())
             .noOcclusion()
             .isRedstoneConductor(($1, $2, $3) -> false)
             .mapColor(MapColor.TERRACOTTA_YELLOW)
@@ -39,7 +40,12 @@ public class RepackagedBlocks {
             Capabilities.EnergyStorage.BLOCK
     ));
 
-    public static final DeferredBlock<PackageShelfBlock> PACKAGE_SHELF = BLOCKS.register("package_shelf", () -> new PackageShelfBlock(BlockBehaviour.Properties.of().noOcclusion()));
+    public static final DeferredBlock<PackageShelfBlock> PACKAGE_SHELF = BLOCKS.register("package_shelf", () -> new PackageShelfBlock(BlockBehaviour.Properties.ofFullCopy(SharedProperties.softMetal())
+            .noOcclusion()
+            .isRedstoneConductor(($1, $2, $3) -> false)
+            .mapColor(MapColor.TERRACOTTA_BLUE)
+            .sound(SoundType.NETHERITE_BLOCK)
+    ));
 
     static {
         ITEMS.register("fluid_packager", () -> new BlockItem(FLUID_PACKAGER.get(), new Item.Properties()));

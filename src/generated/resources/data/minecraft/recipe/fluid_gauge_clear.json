@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "repackaged:fluid_gauge"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "repackaged:fluid_gauge"
+  }
+}

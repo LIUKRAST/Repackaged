@@ -1,6 +1,7 @@
 {
   "values": [
     "repackaged:battery_charger",
-    "repackaged:fluid_packager"
+    "repackaged:fluid_packager",
+    "repackaged:package_shelf"
   ]
 }

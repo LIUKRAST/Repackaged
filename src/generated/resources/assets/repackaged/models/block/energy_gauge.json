@@ -1,0 +1,7 @@
+{
+  "parent": "deployer:block/template_gauge",
+  "textures": {
+    "particle": "repackaged:block/energy_panel",
+    "texture": "repackaged:block/energy_panel"
+  }
+}

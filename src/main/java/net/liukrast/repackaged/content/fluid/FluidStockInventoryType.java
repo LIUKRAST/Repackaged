@@ -1,33 +1,23 @@
 package net.liukrast.repackaged.content.fluid;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
-import com.simibubi.create.content.logistics.BigItemStack;
 import com.simibubi.create.content.logistics.filter.FilterItemStack;
-import com.simibubi.create.foundation.gui.widget.ScrollInput;
-import com.simibubi.create.foundation.utility.CreateLang;
 import it.unimi.dsi.fastutil.Hash;
-import net.liukrast.deployer.lib.helper.GuiRenderingHelpers;
 import net.liukrast.deployer.lib.logistics.GenericPackageOrderData;
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
+import net.liukrast.deployer.lib.logistics.packager.AbstractPackagerBlockEntity;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.logistics.packagerLink.GenericRequestPromise;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackaged.RepackagedConstants;
 import net.liukrast.repackaged.registry.RepackagedDataComponents;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
@@ -44,8 +34,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Random;
-
-import static com.simibubi.create.foundation.gui.AllGuiTextures.NUMBERS;
 
 public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStack, IFluidHandler> {
     private static final Codec<GenericRequestPromise<FluidStack>> REQUEST_CODEC =  GenericRequestPromise.simpleCodec(FluidStack.CODEC);
@@ -128,18 +116,18 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
         }
 
         @Override
-        public FluidStack extract(IFluidHandler handler, FluidStack value, boolean simulate) {
+        public FluidStack extract(IFluidHandler handler, FluidStack value, boolean simulate, AbstractPackagerBlockEntity<Fluid, FluidStack, IFluidHandler> packager) {
             return handler.drain(value, simulate ? IFluidHandler.FluidAction.SIMULATE : IFluidHandler.FluidAction.EXECUTE);
         }
 
         @Override
-        public int fill(IFluidHandler handler, FluidStack stack, boolean simulate) {
+        public int fill(IFluidHandler handler, FluidStack stack, boolean simulate, AbstractPackagerBlockEntity<Fluid, FluidStack, IFluidHandler> packager) {
             return stack.getAmount() - handler.fill(stack.copy(), simulate ? IFluidHandler.FluidAction.SIMULATE : IFluidHandler.FluidAction.EXECUTE);
         }
 
         @Override
         public FluidStack setInSlot(IFluidHandler handler, int slot, FluidStack value, boolean simulate) {
-            int result = fill(handler, value, simulate);
+            int result = fill(handler, value, simulate, null);
             return new FluidStack(value.getFluid(), result);
         }
 
@@ -160,7 +148,7 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
 
         @Override
         public FluidStack insertItem(IFluidHandler handler, int i, FluidStack value, boolean simulate) {
-            return new FluidStack(value.getFluid(), fill(handler, value, simulate));
+            return new FluidStack(value.getFluid(), fill(handler, value, simulate, null));
         }
     };
 

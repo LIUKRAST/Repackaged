@@ -1,10 +1,7 @@
 package net.liukrast.repackaged;
 
 import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
-import net.liukrast.repackaged.datagen.RepackagedBlockModelProvider;
-import net.liukrast.repackaged.datagen.RepackagedDatapackBuiltinEntriesProvider;
-import net.liukrast.repackaged.datagen.RepackagedItemModelProvider;
-import net.liukrast.repackaged.datagen.RepackagedLanguageProvider;
+import net.liukrast.repackaged.datagen.*;
 import net.liukrast.repackaged.datagen.loot.RepackagedBlockLootSubProvider;
 import net.liukrast.repackaged.datagen.tags.RepackagedBlockTagsProvider;
 import net.liukrast.repackaged.registry.*;
@@ -87,7 +84,7 @@ public class Repackaged {
         generator.addProvider(event.includeClient(), new RepackagedItemModelProvider(packOutput, helper));
         var blockTagProvider = new RepackagedBlockTagsProvider(packOutput, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTagProvider);
-        //generator.addProvider(event.includeServer(), new RepackagedItem)
+        generator.addProvider(event.includeServer(), new RepackagedRecipeProvider(packOutput, lookupProvider));
         var dataPackProvider = new RepackagedDatapackBuiltinEntriesProvider(packOutput, lookupProvider);
         generator.addProvider(event.includeServer(), dataPackProvider);
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),

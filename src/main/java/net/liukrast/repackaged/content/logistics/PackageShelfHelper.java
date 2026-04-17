@@ -15,8 +15,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.IntSupplier;
 
 public class PackageShelfHelper extends PackageRepackageHelper {
+    private final IntSupplier sizeGetter;
+    public PackageShelfHelper(IntSupplier sizeGetter) {
+        this.sizeGetter = sizeGetter;
+    }
 
     @Override
     public int addPackageFragment(ItemStack box) {
@@ -36,10 +41,9 @@ public class PackageShelfHelper extends PackageRepackageHelper {
     @Override
     public List<BigItemStack> repack(int orderId, RandomSource r) {
         List<BigItemStack> exportingPackages = new ArrayList<>();
-        int size = 10;
         var li = collectedPackages.get(orderId);
-        for(int i = 0; i < Math.min(size, li.size()); i++) {
-            exportingPackages.add(new BigItemStack(li.get(i).copy()));
+        for (ItemStack itemStack : li) {
+            exportingPackages.add(new BigItemStack(itemStack.copy()));
         }
         return exportingPackages;
     }
@@ -48,6 +52,7 @@ public class PackageShelfHelper extends PackageRepackageHelper {
 
     private boolean isOrderComplete(int orderId) {
         Map<Integer, Map<Integer, Map<Integer, Data>>> dataMap = new HashMap<>();
+        if(collectedPackages.get(orderId).size() > sizeGetter.getAsInt()) return false;
         for(ItemStack box : collectedPackages.get(orderId)) {
             var stockData = box.getOrDefault(DeployerDataComponents.ORDER_STOCK_TYPE_DATA, OrderStockTypeData.EMPTY);
             final int stockIndex = stockData.index();

@@ -20,9 +20,9 @@ public class RepackagedBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        var axe = tag(BlockTags.MINEABLE_WITH_AXE);
         var pick = tag(BlockTags.MINEABLE_WITH_PICKAXE);
         pick.add(RepackagedBlocks.BATTERY_CHARGER.get());
         pick.add(RepackagedBlocks.FLUID_PACKAGER.get());
+        pick.add(RepackagedBlocks.PACKAGE_SHELF.get());
     }
 }

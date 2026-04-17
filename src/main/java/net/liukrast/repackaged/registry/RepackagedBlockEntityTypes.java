@@ -7,6 +7,7 @@ import net.liukrast.repackaged.RepackagedConstants;
 import net.liukrast.repackaged.content.energy.BatteryChargerBlockEntity;
 import net.liukrast.repackaged.content.fluid.FluidPackagerBlockEntity;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlockEntity;
+import net.liukrast.repackaged.content.logistics.PackageShelfRenderer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
@@ -34,7 +35,7 @@ public class RepackagedBlockEntityTypes {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(FLUID_PACKAGER.get(), PackagerRenderer::new);
         event.registerBlockEntityRenderer(BATTERY_CHARGER.get(), PackagerRenderer::new);
-        event.registerBlockEntityRenderer(PACKAGE_SHELF.get(), PackagerRenderer::new);
+        event.registerBlockEntityRenderer(PACKAGE_SHELF.get(), PackageShelfRenderer::new);
     }
 
     @OnlyIn(Dist.CLIENT)

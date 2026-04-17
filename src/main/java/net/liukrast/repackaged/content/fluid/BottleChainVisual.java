@@ -65,10 +65,10 @@ public class BottleChainVisual implements PackageVisualExtension.ChainConveyor {
         var key = new Key(texture, packageItem.style.width()/16f);
 
         var stream = this.stream.get(key);
-        stream.vScale = -(texture.getV1() - texture.getV0()) * 0.5f;
-        stream.v0 = texture.getV0() + (texture.getV1() - texture.getV0()) * 0.5f;
+        stream.vScale = -(texture.getV1() - texture.getV0());
+        stream.v0 = texture.getV0() + (texture.getV1() - texture.getV0());
 
-        stream.progress = packageItem.style.height()/16f * 300/1000;
+        stream.progress = packageItem.style.height()/16f * fs.getAmount()/1000f;
         stream.colorArgb(clientFluid.getTintColor(fs));
         buffers[0] = stream;
 
@@ -76,7 +76,7 @@ public class BottleChainVisual implements PackageVisualExtension.ChainConveyor {
         var surface = this.surface.get(key);
         surface.colorArgb(clientFluid.getTintColor(fs));
         buffers[1] = surface;
-        float scaleFactor = -0.01f;
+        float scaleFactor = -.01f;
 
         postProcessor.subscribe(stream, str -> {
             str.scale(1+scaleFactor);
@@ -87,7 +87,7 @@ public class BottleChainVisual implements PackageVisualExtension.ChainConveyor {
         postProcessor.subscribe(surface, sur -> {
             float savedScale = stream.progress;
             sur.scale(1+scaleFactor, 1, 1+scaleFactor);
-            sur.translate(0.5, savedScale - scaleFactor/2, 0.5);
+            sur.translate(0.5, savedScale + scaleFactor/2, 0.5);
         });
 
         return buffers;

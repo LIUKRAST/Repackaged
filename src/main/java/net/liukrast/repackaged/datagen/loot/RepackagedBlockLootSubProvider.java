@@ -20,10 +20,12 @@ public class RepackagedBlockLootSubProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        //HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         List<Predicate<Block>> exceptions = List.of(
         );
-        RepackagedConstants.getElements(BuiltInRegistries.BLOCK).filter(b -> b.getLootTable() != BuiltInLootTables.EMPTY && exceptions.stream().allMatch(k -> k.test(b))).forEach(this::dropSelf);
+        RepackagedConstants
+                .getElements(BuiltInRegistries.BLOCK)
+                .filter(b -> b.getLootTable() != BuiltInLootTables.EMPTY && exceptions.stream().allMatch(k -> k.test(b)))
+                .forEach(this::dropSelf);
     }
 
     @Override

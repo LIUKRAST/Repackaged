@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/factory_gauge/item",
+  "textures": {
+    "0": "repackaged:block/energy_panel",
+    "particle": "repackaged:block/energy_panel"
+  }
+}

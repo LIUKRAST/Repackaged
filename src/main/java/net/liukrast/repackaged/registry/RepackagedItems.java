@@ -28,6 +28,7 @@ public class RepackagedItems {
     }
 
     public static final DeferredItem<PanelBlockItem> FLUID_GAUGE = REGISTER.register("fluid_gauge", () -> new LogisticallyLinkedPanelBlockItem(RepackagedPanels.FLUID::get, new Item.Properties()));
+    public static final DeferredItem<PanelBlockItem> ENERGY_GAUGE = REGISTER.register("energy_gauge", () -> new LogisticallyLinkedPanelBlockItem(RepackagedPanels.ENERGY::get, new Item.Properties()));
 
     static {
         STANDARD_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()

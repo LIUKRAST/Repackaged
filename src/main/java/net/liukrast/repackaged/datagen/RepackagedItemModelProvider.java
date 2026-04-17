@@ -16,6 +16,7 @@ public class RepackagedItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         createPanel(this, RepackagedItems.FLUID_GAUGE.get());
+        createPanel(this, RepackagedItems.ENERGY_GAUGE.get());
     }
 
 
