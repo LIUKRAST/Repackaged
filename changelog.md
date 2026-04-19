@@ -1,1 +1,3 @@
-First release!
+- Added package entity goggle overlay (moved from deployer)
+- Added unpacking order patch (items will not unpack ordered in storages)
+- Added Vanilla Crafter support to unpacking

@@ -1,24 +1,20 @@
 package net.liukrast.repackaged.content.energy;
 
 import com.simibubi.create.content.logistics.stockTicker.StockKeeperRequestMenu;
-import com.simibubi.create.content.logistics.stockTicker.StockTickerBlockEntity;
 import net.liukrast.deployer.lib.helper.GuiRenderingHelpers;
 import net.liukrast.deployer.lib.logistics.packager.AbstractInventorySummary;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
+import net.liukrast.deployer.lib.logistics.packager.screen.KeeperSourceContext;
 import net.liukrast.deployer.lib.logistics.packager.screen.KeeperTabScreen;
 import net.liukrast.deployer.lib.logistics.packager.screen.ProvidesOrder;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.deployer.lib.mixinExtensions.STBEExtension;
 import net.liukrast.repackaged.RepackagedConstants;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import org.jetbrains.annotations.NotNull;
@@ -43,13 +39,13 @@ public class EnergyTabScreen extends KeeperTabScreen implements ProvidesOrder<En
     private int cached = 0;
     public int amountToOrder = 0;
 
-    public EnergyTabScreen(StockTickerBlockEntity blockEntity, StockKeeperRequestMenu menu) {
-        super(blockEntity, menu, Component.translatable("stock_inventory_type.repackaged.energy"), RepackagedItems.STANDARD_BATTERIES.getFirst().asItem());
+    public EnergyTabScreen(KeeperSourceContext context, StockKeeperRequestMenu menu) {
+        super(context, menu, Component.translatable("stock_inventory_type.repackaged.energy"), RepackagedItems.STANDARD_BATTERIES.getFirst().asItem());
     }
 
     @Override
     public void containerTick() {
-        List<List<EnergyStack>> clientStockSnapshot = beAccess.deployer$getClientStockSnapshot(type);
+        List<List<EnergyStack>> clientStockSnapshot = context.getClientStockSnapshot(type);
         int counter = 0;
         if(clientStockSnapshot != null) {
             for (var a : clientStockSnapshot) {
@@ -94,16 +90,10 @@ public class EnergyTabScreen extends KeeperTabScreen implements ProvidesOrder<En
         amountToOrder = 0;
     }
 
-    protected void playUiSound(SoundEvent sound, float volume, float pitch) {
-        Minecraft.getInstance()
-                .getSoundManager()
-                .play(SimpleSoundInstance.forUI(sound, pitch, volume * 0.25f));
-    }
-
     @Override
     public @Nullable GenericOrderContained<EnergyStack> addToSendQueue() {
         if(amountToOrder == 0) return null;
-        AbstractInventorySummary<Energy, EnergyStack> summary = ((STBEExtension) blockEntity).deployer$getLastClientsideStockSnapshotAsSummary(type);
+        AbstractInventorySummary<Energy, EnergyStack> summary = context.getLastClientsideSnapshotAsSummary(type);
         int inStorage = summary.getCountOf(new EnergyStack(1, Optional.empty()));
         int ato = Math.min(inStorage, amountToOrder);
         cached = ato;

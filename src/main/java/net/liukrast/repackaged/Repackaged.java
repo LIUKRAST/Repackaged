@@ -1,18 +1,26 @@
 package net.liukrast.repackaged;
 
+import com.simibubi.create.api.contraption.BlockMovementChecks;
+import com.simibubi.create.api.packager.unpacking.UnpackingHandler;
 import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
+import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
+import net.liukrast.repackaged.content.logistics.VanillaCrafterUnpackingHandler;
 import net.liukrast.repackaged.datagen.*;
 import net.liukrast.repackaged.datagen.loot.RepackagedBlockLootSubProvider;
 import net.liukrast.repackaged.datagen.tags.RepackagedBlockTagsProvider;
 import net.liukrast.repackaged.registry.*;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -27,7 +35,7 @@ import java.util.stream.Stream;
 
 @Mod(RepackagedConstants.MOD_ID)
 public class Repackaged {
-    public Repackaged(IEventBus eventBus) {
+    public Repackaged(IEventBus eventBus, ModContainer container) {
         RepackagedBlockEntityTypes.register(eventBus);
         RepackagedBlocks.register(eventBus);
         RepackagedDataComponents.register(eventBus);
@@ -39,17 +47,23 @@ public class Repackaged {
         RepackagedPanels.init(eventBus);
         RepackagedArmInteractionPointTypes.init(eventBus);
 
-        /*BlockMovementChecks.registerAttachedCheck((state, level, pos, dir) -> {
+        container.registerConfig(ModConfig.Type.SERVER, RepackagedConfig.Server.SPEC);
+
+        BlockMovementChecks.registerAttachedCheck((state, level, pos, dir) -> {
             var block = RepackagedBlocks.PACKAGE_SHELF.get();
             if(!state.is(block)) return BlockMovementChecks.CheckResult.PASS;
             var state1 = level.getBlockState(pos.relative(dir));
             if(!state1.is(block)) return BlockMovementChecks.CheckResult.PASS;
-            if(dir == Direction.DOWN && state1.getValue(PackageShelfBlock.SHAPE) != PackageShelfBlock.Shape.TOP)
+            if(dir == Direction.DOWN && state1.getValue(PackageShelfBlock.TYPE) != PackageShelfBlock.Type.TOP)
                 return BlockMovementChecks.CheckResult.SUCCESS;
-            if(dir == Direction.UP && state1.getValue(PackageShelfBlock.SHAPE) != PackageShelfBlock.Shape.BOTTOM)
+            if(dir == Direction.UP && state1.getValue(PackageShelfBlock.TYPE) != PackageShelfBlock.Type.BOTTOM)
                 return BlockMovementChecks.CheckResult.SUCCESS;
             return BlockMovementChecks.CheckResult.PASS;
-        });*/
+        });
+
+
+        //noinspection UnstableApiUsage
+        UnpackingHandler.REGISTRY.register(Blocks.CRAFTER, VanillaCrafterUnpackingHandler.INSTANCE);
     }
 
     @SubscribeEvent
