@@ -127,6 +127,7 @@ dependencies {
     implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.0"))
 
     implementation("net.liukrast:deployer-1.21.1:${deployer_version}")
+    implementation(jarJar("net.liukrast:compat_manager-${minecraft_version}:${compat_manager_version}"))
 
     // compile against the JEI API but do not include it at runtime
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
@@ -134,6 +135,8 @@ dependencies {
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
     implementation fileTree(dir: "${rootDir}/libs", include: ['*.jar'])
+
+    implementation "curse.maven:createaddition-439890:7518252"
 
 
 }

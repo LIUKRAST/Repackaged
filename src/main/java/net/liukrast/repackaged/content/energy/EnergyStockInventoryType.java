@@ -20,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.capabilities.BlockCapability;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.energy.EnergyStorage;
@@ -36,6 +37,23 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
     private static final Codec<GenericRequestPromise<EnergyStack>> REQUEST_CODEC = GenericRequestPromise.simpleCodec(EnergyStack.CODEC);
 
     public static final int MAX_BATTERY_ENERGY = 500_000;
+
+    public EnergyStockInventoryType() {
+        defaultUnpackProcedure = (level, pos, state, side, items, orderContext, simulate, packager) -> {
+            BlockEntity targetBE = level.getBlockEntity(pos);
+            if(targetBE == null) return false;
+
+            IEnergyStorage energyStorage = level.getCapability(getBlockCapability(), pos, state, targetBE, null);
+            if(energyStorage == null)
+                return false;
+
+            int total = 0;
+            for(EnergyStack stack : items) {
+                total+=stack.getAmount();
+            }
+            return energyStorage.receiveEnergy(total, simulate) >= total;
+        };
+    }
 
     public static final Hash.Strategy<? super EnergyStack> ENERGY_STACK =
             new Hash.Strategy<>() {
