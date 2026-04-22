@@ -1,4 +1,9 @@
-- Added package entity goggle overlay (moved from deployer)
-- Added unpacking order patch (items will not unpack ordered in storages)
-- Added Vanilla Crafter support to unpacking
-- Added correct unpacking compatibility with create craft & additions
+- Removed create craft & addition compatibility to now use standard Forge energy libraries (more stable, still compatible)
+- Added ponders
+- Added Packager Connector
+- Added config for battery max FE amount
+- You can now hold ALT to request 100.000 energy per scroll
+- Fixed package shelf not having powered blockstate
+- Added new rare bottle styles
+- Package shelf now extracts items correctly
+- 

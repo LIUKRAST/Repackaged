@@ -8,6 +8,7 @@ import net.liukrast.repackaged.content.energy.BatteryChargerBlockEntity;
 import net.liukrast.repackaged.content.fluid.FluidPackagerBlockEntity;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlockEntity;
 import net.liukrast.repackaged.content.logistics.PackageShelfRenderer;
+import net.liukrast.repackaged.content.logistics.PackagerConnectorBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@SuppressWarnings("DataFlowIssue")
 public class RepackagedBlockEntityTypes {
     private RepackagedBlockEntityTypes() {}
 
@@ -26,6 +28,7 @@ public class RepackagedBlockEntityTypes {
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidPackagerBlockEntity>> FLUID_PACKAGER = REGISTER.register("fluid_packager", () -> BlockEntityType.Builder.of(FluidPackagerBlockEntity::new, RepackagedBlocks.FLUID_PACKAGER.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BatteryChargerBlockEntity>> BATTERY_CHARGER = REGISTER.register("battery_charger", () -> BlockEntityType.Builder.of(BatteryChargerBlockEntity::new, RepackagedBlocks.BATTERY_CHARGER.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PackageShelfBlockEntity>> PACKAGE_SHELF = REGISTER.register("package_shelf", () -> BlockEntityType.Builder.of(PackageShelfBlockEntity::new, RepackagedBlocks.PACKAGE_SHELF.get()).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PackagerConnectorBlockEntity>> PACKAGER_CONNECTOR = REGISTER.register("packager_connector", () -> BlockEntityType.Builder.of(PackagerConnectorBlockEntity::new, RepackagedBlocks.PACKAGER_CONNECTOR.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         REGISTER.register(eventBus);

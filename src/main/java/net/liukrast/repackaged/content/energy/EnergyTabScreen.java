@@ -80,7 +80,7 @@ public class EnergyTabScreen extends KeeperTabScreen implements ProvidesOrder<En
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        int scrollAmount = hasControlDown() ? 1000 : hasShiftDown() ? 1 : 100;
+        int scrollAmount = hasControlDown() ? 1000 : hasShiftDown() ? 1 : hasAltDown() ? 100_000 : 100;
         amountToOrder = (int)Mth.clamp(amountToOrder + scrollY * scrollAmount, 0, amountInStorage);
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }

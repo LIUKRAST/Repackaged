@@ -20,7 +20,17 @@ public class RepackagedPackageStyles {
     @Unmodifiable
     public static final List<CustomPackageStyle> BOTTLE_STYLES = ImmutableList.of(
             new CustomPackageStyle(RepackagedConstants.id("bottle"), "copper", 8, 12, 19f, false),
-            new CustomPackageStyle(RepackagedConstants.id("bottle"), "copper", 10, 14, 20f, false)
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "exposed_copper", 8, 12, 19f, true),
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "weathered_copper", 8, 12, 19f, true),
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "oxidized_copper", 8, 12, 19f, true),
+
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "golden", 8, 12, 19f, true),
+
+
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "copper", 10, 14, 20f, false),
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "large_exposed_copper", 10, 14, 20f, true),
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "large_weathered_copper", 10, 14, 20f, true),
+            new CustomPackageStyle(RepackagedConstants.id("bottle"), "large_oxidized_copper", 10, 14, 20f, true)
     );
 
     @ApiStatus.Internal

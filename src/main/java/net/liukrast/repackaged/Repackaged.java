@@ -2,7 +2,6 @@ package net.liukrast.repackaged;
 
 import com.simibubi.create.api.contraption.BlockMovementChecks;
 import com.simibubi.create.api.packager.unpacking.UnpackingHandler;
-import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
 import net.liukrast.repackaged.content.logistics.VanillaCrafterUnpackingHandler;
 import net.liukrast.repackaged.datagen.*;
@@ -21,7 +20,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -83,8 +81,14 @@ public class Repackaged {
 
         event.registerItem(
                 Capabilities.EnergyStorage.ITEM,
-                (stack, $) -> new ComponentEnergyStorage(stack, RepackagedDataComponents.BATTERY_CONTENTS.get(), EnergyStockInventoryType.MAX_BATTERY_ENERGY, EnergyStockInventoryType.MAX_BATTERY_ENERGY, EnergyStockInventoryType.MAX_BATTERY_ENERGY),
+                (stack, $) -> new ComponentEnergyStorage(stack, RepackagedDataComponents.BATTERY_CONTENTS.get(), RepackagedConfig.Server.MAX_BATTERY_ENERGY.getAsInt(), RepackagedConfig.Server.MAX_BATTERY_ENERGY.getAsInt(), RepackagedConfig.Server.MAX_BATTERY_ENERGY.getAsInt()),
                 Stream.concat(RepackagedItems.RARE_BATTERIES.stream(), RepackagedItems.STANDARD_BATTERIES.stream()).toArray(DeferredItem[]::new)
+        );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                RepackagedBlockEntityTypes.PACKAGE_SHELF.get(),
+                (be, context) -> be.inventory
         );
     }
 
@@ -97,6 +101,7 @@ public class Repackaged {
         generator.addProvider(event.includeClient(), new RepackagedLanguageProvider(packOutput));
         generator.addProvider(event.includeClient(), new RepackagedBlockModelProvider(packOutput, helper));
         generator.addProvider(event.includeClient(), new RepackagedItemModelProvider(packOutput, helper));
+        generator.addProvider(event.includeClient(), new RepackagedBlockStateProvider(packOutput, helper));
         var blockTagProvider = new RepackagedBlockTagsProvider(packOutput, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTagProvider);
         generator.addProvider(event.includeServer(), new RepackagedRecipeProvider(packOutput, lookupProvider));

@@ -1,6 +1,7 @@
 package net.liukrast.repackaged;
 
 import com.simibubi.create.foundation.item.render.SimpleCustomRenderer;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.liukrast.deployer.lib.helper.ClientRegisterHelpers;
 import net.liukrast.repackaged.content.energy.EnergyGaugeSlot;
 import net.liukrast.repackaged.content.energy.EnergyRequesterTabScreen;
@@ -63,5 +64,7 @@ public class RepackagedClient {
         ClientRegisterHelpers.registerRedstoneRequesterTab(RepackagedStockInventoryTypes.ENERGY.get(), EnergyRequesterTabScreen::new);
         ClientRegisterHelpers.registerGaugeSlot(RepackagedPanels.FLUID.get(), FluidGaugeSlot::new);
         ClientRegisterHelpers.registerGaugeSlot(RepackagedPanels.ENERGY.get(), EnergyGaugeSlot::new);
+
+        PonderIndex.addPlugin(new RepackagedPonderPlugin());
     }
 }

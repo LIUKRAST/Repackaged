@@ -9,7 +9,8 @@ public class RepackagedPartialModels {
     public static final PartialModel
             FLUID_PANEL = block("fluid_gauge"),
             ENERGY_PANEL = block("energy_gauge"),
-            FLUID_PACKAGER_TRAY = block("fluid_packager/tray");
+            FLUID_PACKAGER_TRAY = block("fluid_packager/tray"),
+            TEMPLATE_BATTERY = block("battery_template");
 
 
     private static PartialModel block(String path) {

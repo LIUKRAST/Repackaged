@@ -1,4 +1,5 @@
-// 1.21.1	2026-02-07T19:45:01.0588423	Loot Tables
+// 1.21.1	2026-04-21T12:48:10.5614664	Loot Tables
 edde1ef005d5f483f58f0184631bdf81b801c797 data/repackaged/loot_table/blocks/battery_charger.json
 9bfc7801297535c63340eb95ee9d3214bc6e01a4 data/repackaged/loot_table/blocks/fluid_packager.json
+41b8ea87320728b640d44bbb90b4f486c356cf97 data/repackaged/loot_table/blocks/packager_connector.json
 ed4c9902f288dbde2a58ab44d3ec65857040f16a data/repackaged/loot_table/blocks/package_shelf.json

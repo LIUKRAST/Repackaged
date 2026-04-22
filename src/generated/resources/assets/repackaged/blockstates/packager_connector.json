@@ -1,0 +1,564 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block",
+        "x": 180
+      },
+      "when": {
+        "facing": "down"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 180
+      },
+      "when": {
+        "facing": "down",
+        "pointing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block"
+      },
+      "when": {
+        "facing": "up"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "y": 180
+      },
+      "when": {
+        "facing": "up",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "y": 180
+      },
+      "when": {
+        "facing": "up",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in"
+      },
+      "when": {
+        "facing": "up",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out"
+      },
+      "when": {
+        "facing": "up",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "y": 180
+      },
+      "when": {
+        "facing": "up",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "y": 180
+      },
+      "when": {
+        "facing": "up",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel"
+      },
+      "when": {
+        "facing": "up",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel"
+      },
+      "when": {
+        "facing": "up",
+        "pointing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block",
+        "x": 90
+      },
+      "when": {
+        "facing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 90
+      },
+      "when": {
+        "facing": "north",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 270,
+        "y": 180
+      },
+      "when": {
+        "facing": "north",
+        "pointing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 270
+      },
+      "when": {
+        "facing": "south",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 270
+      },
+      "when": {
+        "facing": "south",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 90,
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 270
+      },
+      "when": {
+        "facing": "south",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 270
+      },
+      "when": {
+        "facing": "south",
+        "pointing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 90,
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 270,
+        "y": 90
+      },
+      "when": {
+        "facing": "west",
+        "pointing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/block",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "pointed_n": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "pointing": "north"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "pointed_s": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "pointing": "south"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "pointed_w": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 90,
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "pointing": "west"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/in_barrel",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "pointed_e": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "repackaged:block/packager_connector/out_barrel",
+        "x": 270,
+        "y": 270
+      },
+      "when": {
+        "facing": "east",
+        "pointing": "east"
+      }
+    }
+  ]
+}

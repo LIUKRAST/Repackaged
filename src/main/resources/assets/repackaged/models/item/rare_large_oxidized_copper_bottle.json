@@ -1,0 +1,7 @@
+{
+  "parent": "repackaged:item/bottle/copper_10x14",
+  "textures": {
+    "0": "repackaged:item/bottle/oxidized_copper_large",
+    "particle": "repackaged:item/bottle/oxidized_copper_large"
+  }
+}

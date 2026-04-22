@@ -1,6 +1,7 @@
 package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.helper.MinecraftHelpers;
+import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
 import net.liukrast.repackaged.RepackagedConstants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
@@ -19,6 +20,7 @@ public class RepackagedCreativeTabs {
                         out.accept(entry.get());
                     }
                     for(var entry : RepackagedItems.REGISTER.getEntries()) {
+                        if(entry.get() instanceof GenericPackageItem gpi && gpi.style.rare()) continue;
                         out.accept(entry.get());
                     }
                     RepackagedConstants.getElements(BuiltInRegistries.FLUID).forEach(f -> out.accept(f.getBucket()));

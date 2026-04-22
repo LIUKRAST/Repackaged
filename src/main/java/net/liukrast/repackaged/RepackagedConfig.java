@@ -23,6 +23,11 @@ public class RepackagedConfig {
                 .comment("Makes so boxes always unpack in the correct order, even without passing through a re-packager")
                 .define("boxOrderFix", true);
 
+        public static final ModConfigSpec.IntValue MAX_BATTERY_ENERGY = BUILDER
+                .comment("Defines the max amount of energy a battery can contain")
+                .comment("REQUIRES RESTART!")
+                .defineInRange("maxBatteryEnergy", 500_000, 1, Integer.MAX_VALUE);
+
         static final ModConfigSpec SPEC = BUILDER.build();
     }
 }

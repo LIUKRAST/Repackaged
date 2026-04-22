@@ -2,10 +2,20 @@
   "multipart": [
     {
       "when": {
-        "type": "bottom"
+        "type": "bottom",
+        "powered": false
       },
       "apply": {
         "model": "repackaged:block/package_shelf/single"
+      }
+    },
+    {
+      "when": {
+        "type": "bottom",
+        "powered": true
+      },
+      "apply": {
+        "model": "repackaged:block/package_shelf/single_on"
       }
     },
     {

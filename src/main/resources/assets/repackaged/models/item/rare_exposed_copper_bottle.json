@@ -1,0 +1,7 @@
+{
+  "parent": "repackaged:item/bottle/copper_8x12",
+  "textures": {
+	"0": "repackaged:item/bottle/exposed_copper",
+	"particle": "repackaged:item/bottle/exposed_copper"
+  }
+}

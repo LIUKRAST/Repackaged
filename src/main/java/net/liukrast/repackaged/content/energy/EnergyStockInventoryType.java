@@ -10,6 +10,7 @@ import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.logistics.packagerLink.GenericRequestPromise;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
+import net.liukrast.repackaged.RepackagedConfig;
 import net.liukrast.repackaged.registry.RepackagedDataComponents;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.ChatFormatting;
@@ -35,8 +36,6 @@ import java.util.Random;
 
 public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyStack, IEnergyStorage> {
     private static final Codec<GenericRequestPromise<EnergyStack>> REQUEST_CODEC = GenericRequestPromise.simpleCodec(EnergyStack.CODEC);
-
-    public static final int MAX_BATTERY_ENERGY = 500_000;
 
     public EnergyStockInventoryType() {
         defaultUnpackProcedure = (level, pos, state, side, items, orderContext, simulate, packager) -> {
@@ -147,7 +146,7 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
 
         @Override
         public int maxCountPerSlot() {
-            return MAX_BATTERY_ENERGY;
+            return RepackagedConfig.Server.MAX_BATTERY_ENERGY.getAsInt();
         }
 
         @Override
@@ -175,7 +174,7 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
 
         @Override
         public IEnergyStorage create(int i) {
-            return new EnergyStorage(MAX_BATTERY_ENERGY);
+            return new EnergyStorage(RepackagedConfig.Server.MAX_BATTERY_ENERGY.getAsInt());
         }
 
         @Override

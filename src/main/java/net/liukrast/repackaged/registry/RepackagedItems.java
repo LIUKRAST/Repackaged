@@ -33,22 +33,22 @@ public class RepackagedItems {
     static {
         STANDARD_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()
                 .filter(style -> !style.rare())
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".bottle")))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".bottle." + style.type())))
                 .toList();
 
         STANDARD_BATTERIES = RepackagedPackageStyles.BATTERY_STYLES.stream()
                 .filter(style -> !style.rare())
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".battery")))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".battery." + style.type())))
                 .toList();
 
         RARE_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()
                 .filter(CustomPackageStyle::rare)
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".rare_bottle")))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".rare_bottle." + style.type())))
                 .toList();
 
         RARE_BATTERIES = RepackagedPackageStyles.BATTERY_STYLES.stream()
                 .filter(CustomPackageStyle::rare)
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".rare_battery")))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".rare_battery." + style.type())))
                 .toList();
     }
 
