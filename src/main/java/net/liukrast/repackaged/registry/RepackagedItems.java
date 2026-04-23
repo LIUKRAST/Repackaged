@@ -4,7 +4,7 @@ import net.liukrast.deployer.lib.logistics.board.LogisticallyLinkedPanelBlockIte
 import net.liukrast.deployer.lib.logistics.board.PanelBlockItem;
 import net.liukrast.deployer.lib.logistics.packager.CustomPackageStyle;
 import net.liukrast.deployer.lib.logistics.packager.GenericPackageItem;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 public class RepackagedItems {
     private RepackagedItems() {}
 
-    protected static final DeferredRegister.Items REGISTER = DeferredRegister.Items.createItems(RepackagedConstants.MOD_ID);
+    protected static final DeferredRegister.Items REGISTER = DeferredRegister.Items.createItems(Repackaged.CONSTANTS.getModId());
 
     public static final List<DeferredItem<GenericPackageItem>> STANDARD_BOTTLES;
     public static final List<DeferredItem<GenericPackageItem>> STANDARD_BATTERIES;
@@ -33,22 +33,22 @@ public class RepackagedItems {
     static {
         STANDARD_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()
                 .filter(style -> !style.rare())
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".bottle." + style.type())))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + Repackaged.CONSTANTS.getModId() + ".bottle." + style.type())))
                 .toList();
 
         STANDARD_BATTERIES = RepackagedPackageStyles.BATTERY_STYLES.stream()
                 .filter(style -> !style.rare())
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".battery." + style.type())))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + Repackaged.CONSTANTS.getModId() + ".battery." + style.type())))
                 .toList();
 
         RARE_BOTTLES = RepackagedPackageStyles.BOTTLE_STYLES.stream()
                 .filter(CustomPackageStyle::rare)
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + RepackagedConstants.MOD_ID + ".rare_bottle." + style.type())))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.FLUID::get, "item." + Repackaged.CONSTANTS.getModId() + ".rare_bottle." + style.type())))
                 .toList();
 
         RARE_BATTERIES = RepackagedPackageStyles.BATTERY_STYLES.stream()
                 .filter(CustomPackageStyle::rare)
-                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + RepackagedConstants.MOD_ID + ".rare_battery." + style.type())))
+                .map(style -> REGISTER.register(style.getItemId().getPath(), () -> new GenericPackageItem(new Item.Properties().stacksTo(1), style, RepackagedStockInventoryTypes.ENERGY::get, "item." + Repackaged.CONSTANTS.getModId() + ".rare_battery." + style.type())))
                 .toList();
     }
 

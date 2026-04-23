@@ -8,7 +8,7 @@ import net.liukrast.deployer.lib.logistics.packager.screen.KeeperSourceContext;
 import net.liukrast.deployer.lib.logistics.packager.screen.KeeperTabScreen;
 import net.liukrast.deployer.lib.logistics.packager.screen.ProvidesOrder;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.ChatFormatting;
@@ -27,7 +27,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 public class EnergyTabScreen extends KeeperTabScreen implements ProvidesOrder<EnergyStack> {
-    private static final ResourceLocation TEXTURE = RepackagedConstants.id("textures/gui/energy_stock_inventory.png");
+    private static final ResourceLocation TEXTURE = Repackaged.CONSTANTS.id("textures/gui/energy_stock_inventory.png");
     private static final List<Component> UNFINISHED_ORDER = List.of(
             Component.translatable("stock_inventory_type.unfinished_order").withStyle(style -> style.withColor(0x5391e1)),
             Component.translatable("stock_inventory_type.unfinished_order_line_1").withStyle(ChatFormatting.GRAY),

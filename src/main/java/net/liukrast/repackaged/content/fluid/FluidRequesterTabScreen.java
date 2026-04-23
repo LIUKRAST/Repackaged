@@ -6,7 +6,7 @@ import net.liukrast.deployer.lib.helper.client.FluidGhostSlot;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.logistics.packager.screen.RequesterTabScreen;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FluidRequesterTabScreen extends RequesterTabScreen<FluidStack> {
-    private static final ResourceLocation TEXTURE = RepackagedConstants.id("textures/gui/fluid_stock_inventory.png");
+    private static final ResourceLocation TEXTURE = Repackaged.CONSTANTS.id("textures/gui/fluid_stock_inventory.png");
 
     private List<FluidGhostSlot> slots;
     public FluidRequesterTabScreen(RedstoneRequesterMenu container, StockInventoryType<?, FluidStack, ?> type, GenericOrderContained<FluidStack> data) {

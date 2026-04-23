@@ -1,20 +1,13 @@
 package net.liukrast.repackaged.content.logistics;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.datafixers.util.Pair;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.CreateClient;
-import com.simibubi.create.content.kinetics.crafter.CrafterHelper;
-import com.simibubi.create.foundation.blockEntity.behaviour.CenteredSideValueBoxTransform;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueBox;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueBoxTransform;
-import com.simibubi.create.foundation.blockEntity.behaviour.edgeInteraction.EdgeInteractionHandler;
-import com.simibubi.create.foundation.blockEntity.behaviour.edgeInteraction.EdgeInteractionRenderer;
-import com.simibubi.create.foundation.utility.CreateLang;
 import net.createmod.catnip.math.VecHelper;
 import net.createmod.catnip.outliner.Outliner;
-import net.createmod.catnip.theme.Color;
-import net.liukrast.repackaged.RepackagedLang;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -22,7 +15,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.CommonComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -106,10 +98,10 @@ public class PackageShelfBehaviour {
             return;
 
         List<MutableComponent> tip = new ArrayList<>();
-        tip.add(RepackagedLang.translateDirect("logistics.shelf.connected"));
-        tip.add(RepackagedLang.translateDirect(connect
+        tip.add(Repackaged.CONSTANTS.translate("logistics.shelf.connected").component());
+        tip.add(Repackaged.CONSTANTS.translate(connect
                 ? "logistics.shelf.click_to_merge"
-                : "logistics.shelf.click_to_separate"));
+                : "logistics.shelf.click_to_separate").component());
         CreateClient.VALUE_SETTINGS_HANDLER.showHoverTip(tip);
     }
 

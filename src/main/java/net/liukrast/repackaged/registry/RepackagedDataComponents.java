@@ -3,7 +3,7 @@ package net.liukrast.repackaged.registry;
 import com.mojang.serialization.Codec;
 import net.liukrast.deployer.lib.logistics.GenericPackageOrderData;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.content.energy.EnergyStack;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,7 +20,7 @@ import static net.liukrast.deployer.lib.helper.MinecraftHelpers.DataComponents.c
 public class RepackagedDataComponents {
     private RepackagedDataComponents() {}
 
-    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(BuiltInRegistries.DATA_COMPONENT_TYPE, RepackagedConstants.MOD_ID);
+    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENTS = DeferredRegister.create(BuiltInRegistries.DATA_COMPONENT_TYPE, Repackaged.CONSTANTS.getModId());
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<SimpleFluidContent>> BOTTLE_CONTENTS = DATA_COMPONENTS.register("bottle_contents", () -> DataComponentType.<SimpleFluidContent>builder()
             .persistent(SimpleFluidContent.CODEC)

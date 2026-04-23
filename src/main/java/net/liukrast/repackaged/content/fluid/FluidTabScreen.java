@@ -7,7 +7,7 @@ import com.simibubi.create.foundation.gui.AllGuiTextures;
 import net.liukrast.deployer.lib.helper.GuiRenderingHelpers;
 import net.liukrast.deployer.lib.logistics.packager.screen.KeeperSourceContext;
 import net.liukrast.deployer.lib.logistics.packager.screen.StockTabScreen;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.client.gui.GuiGraphics;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class FluidTabScreen extends StockTabScreen<Fluid, FluidStack> {
-    private static final ResourceLocation TEXTURE = RepackagedConstants.id("textures/gui/fluid_stock_inventory.png");
+    private static final ResourceLocation TEXTURE = Repackaged.CONSTANTS.id("textures/gui/fluid_stock_inventory.png");
     public FluidTabScreen(KeeperSourceContext context, StockKeeperRequestMenu menu) {
         super(context, menu, RepackagedItems.STANDARD_BOTTLES.getFirst().asItem(), RepackagedStockInventoryTypes.FLUID.get());
     }

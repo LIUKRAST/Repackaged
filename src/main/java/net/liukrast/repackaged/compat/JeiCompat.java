@@ -4,7 +4,7 @@ import com.simibubi.create.content.logistics.redstoneRequester.RedstoneRequester
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.compat.jei.GhostFluidHandler;
 import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.system.NonnullDefault;
@@ -15,7 +15,7 @@ import org.lwjgl.system.NonnullDefault;
 public class JeiCompat implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return RepackagedConstants.id("jei_plugin");
+        return Repackaged.CONSTANTS.id("jei_plugin");
     }
 
     @Override

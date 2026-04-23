@@ -2,7 +2,7 @@ package net.liukrast.repackaged.registry;
 
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.registry.DeployerRegistries;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.content.energy.Energy;
 import net.liukrast.repackaged.content.energy.EnergyStack;
 import net.liukrast.repackaged.content.energy.EnergyStockInventoryType;
@@ -18,7 +18,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class RepackagedStockInventoryTypes {
     private RepackagedStockInventoryTypes() {}
 
-    private static final DeferredRegister<StockInventoryType<?,?,?>> REGISTER = DeferredRegister.create(DeployerRegistries.STOCK_INVENTORY, RepackagedConstants.MOD_ID);
+    private static final DeferredRegister<StockInventoryType<?,?,?>> REGISTER = DeferredRegister.create(DeployerRegistries.STOCK_INVENTORY, Repackaged.CONSTANTS.getModId());
 
     public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Fluid, FluidStack, IFluidHandler>> FLUID = REGISTER.register("fluid", FluidStockInventoryType::new);
     public static final DeferredHolder<StockInventoryType<?,?,?>, StockInventoryType<Energy, EnergyStack, IEnergyStorage>> ENERGY = REGISTER.register("energy", EnergyStockInventoryType::new);

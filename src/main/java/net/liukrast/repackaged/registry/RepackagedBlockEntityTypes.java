@@ -3,7 +3,7 @@ package net.liukrast.repackaged.registry;
 import com.simibubi.create.content.logistics.packager.PackagerRenderer;
 import com.simibubi.create.content.logistics.packager.PackagerVisual;
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.content.energy.BatteryChargerBlockEntity;
 import net.liukrast.repackaged.content.fluid.FluidPackagerBlockEntity;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlockEntity;
@@ -23,7 +23,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class RepackagedBlockEntityTypes {
     private RepackagedBlockEntityTypes() {}
 
-    private static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, RepackagedConstants.MOD_ID);
+    private static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Repackaged.CONSTANTS.getModId());
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FluidPackagerBlockEntity>> FLUID_PACKAGER = REGISTER.register("fluid_packager", () -> BlockEntityType.Builder.of(FluidPackagerBlockEntity::new, RepackagedBlocks.FLUID_PACKAGER.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BatteryChargerBlockEntity>> BATTERY_CHARGER = REGISTER.register("battery_charger", () -> BlockEntityType.Builder.of(BatteryChargerBlockEntity::new, RepackagedBlocks.BATTERY_CHARGER.get()).build(null));

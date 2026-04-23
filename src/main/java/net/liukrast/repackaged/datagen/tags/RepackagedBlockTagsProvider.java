@@ -1,6 +1,6 @@
 package net.liukrast.repackaged.datagen.tags;
 
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @NonnullDefault
 public class RepackagedBlockTagsProvider extends BlockTagsProvider {
     public RepackagedBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, RepackagedConstants.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, Repackaged.CONSTANTS.getModId(), existingFileHelper);
     }
 
     @Override

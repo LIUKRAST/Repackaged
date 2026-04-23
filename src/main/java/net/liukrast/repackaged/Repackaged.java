@@ -2,6 +2,7 @@ package net.liukrast.repackaged;
 
 import com.simibubi.create.api.contraption.BlockMovementChecks;
 import com.simibubi.create.api.packager.unpacking.UnpackingHandler;
+import net.liukrast.deployer.lib.helper.Constants;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
 import net.liukrast.repackaged.content.logistics.VanillaCrafterUnpackingHandler;
 import net.liukrast.repackaged.datagen.*;
@@ -32,8 +33,10 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-@Mod(RepackagedConstants.MOD_ID)
+@Mod("repackaged")
 public class Repackaged {
+    public static final Constants CONSTANTS = Constants.of("repackaged");
+
     public Repackaged(IEventBus eventBus, ModContainer container) {
         RepackagedBlockEntityTypes.register(eventBus);
         RepackagedBlocks.register(eventBus);

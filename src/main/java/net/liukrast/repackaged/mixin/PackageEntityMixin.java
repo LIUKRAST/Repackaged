@@ -1,10 +1,9 @@
 package net.liukrast.repackaged.mixin;
 
 import com.simibubi.create.content.logistics.box.PackageEntity;
-import net.createmod.catnip.lang.LangBuilder;
-import net.liukrast.deployer.lib.DeployerConfig;
-import net.liukrast.deployer.lib.DeployerConstants;
 import net.liukrast.deployer.lib.helper.client.DeployerGoggleInformation;
+import net.liukrast.repackaged.Repackaged;
+import net.liukrast.repackaged.RepackagedConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -26,10 +25,10 @@ public class PackageEntityMixin implements DeployerGoggleInformation {
     @OnlyIn(Dist.CLIENT)
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        if(!DeployerConfig.Client.PACKAGE_GOGGLE_INFO.getAsBoolean()) return DeployerGoggleInformation.super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+        if(!RepackagedConfig.Client.PACKAGE_GOGGLE_INFO.getAsBoolean()) return DeployerGoggleInformation.super.addToGoggleTooltip(tooltip, isPlayerSneaking);
         var li = box.getTooltipLines(Item.TooltipContext.of(Minecraft.getInstance().level), Minecraft.getInstance().player, TooltipFlag.NORMAL);
         for(var c : li) {
-            new LangBuilder(DeployerConstants.MOD_ID).add(c).forGoggles(tooltip, 0);
+            Repackaged.CONSTANTS.langBuilder().add(c).forGoggles(tooltip, 0);
         }
         return true;
     }

@@ -1,6 +1,6 @@
 package net.liukrast.repackaged.datagen;
 
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
@@ -13,6 +13,6 @@ public class RepackagedDatapackBuiltinEntriesProvider extends DatapackBuiltinEnt
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder();
 
     public RepackagedDatapackBuiltinEntriesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(RepackagedConstants.MOD_ID));
+        super(output, registries, BUILDER, Set.of(Repackaged.CONSTANTS.getModId()));
     }
 }

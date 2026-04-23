@@ -5,7 +5,7 @@ import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
 import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
-import net.liukrast.deployer.lib.helper.ponder.SmartMultiSceneBuilder;
+import net.liukrast.deployer.lib.helper.ponder.SmartPonderRegistrationHelper;
 import net.liukrast.repackaged.ponder.BatteryChargerPonder;
 import net.liukrast.repackaged.ponder.PackageShelfPonder;
 import net.liukrast.repackaged.ponder.PackagerConnectorPonder;
@@ -13,33 +13,27 @@ import net.liukrast.repackaged.ponder.StackedPackagersPonder;
 import net.liukrast.repackaged.registry.RepackagedBlocks;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 public class RepackagedPonderPlugin implements PonderPlugin {
     @Override
     public String getModId() {
-        return RepackagedConstants.MOD_ID;
+        return Repackaged.CONSTANTS.getModId();
     }
 
     @Override
     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> helper) {
-        PonderSceneRegistrationHelper<Item> HELPER = helper.withKeyFunction(BuiltInRegistries.ITEM::getKey);
-
+        var HELPER = SmartPonderRegistrationHelper.of(helper.withKeyFunction(BuiltInRegistries.ITEM::getKey));
         var stacked = new StackedPackagersPonder();
-
-        SmartMultiSceneBuilder.of(HELPER.forComponents(RepackagedBlocks.BATTERY_CHARGER.asItem()))
+        HELPER.forComponents(RepackagedBlocks.BATTERY_CHARGER.asItem())
                 .addPonder(new BatteryChargerPonder())
                 .addPonder(stacked);
-
-        SmartMultiSceneBuilder.of(HELPER.forComponents(RepackagedBlocks.FLUID_PACKAGER.asItem(), AllBlocks.PACKAGER.asItem()))
+        HELPER.forComponents(RepackagedBlocks.FLUID_PACKAGER.asItem(), AllBlocks.PACKAGER.asItem())
                 .addPonder(stacked);
-
-        SmartMultiSceneBuilder.of(HELPER.forComponents(RepackagedBlocks.PACKAGE_SHELF.asItem()))
+        HELPER.forComponents(RepackagedBlocks.PACKAGE_SHELF.asItem())
                 .addPonder(new PackageShelfPonder());
-
-        SmartMultiSceneBuilder.of(HELPER.forComponents(RepackagedBlocks.PACKAGER_CONNECTOR.asItem()))
+        HELPER.forComponents(RepackagedBlocks.PACKAGER_CONNECTOR.asItem())
                 .addPonder(new PackagerConnectorPonder());
 
     }

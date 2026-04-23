@@ -5,7 +5,7 @@ import net.liukrast.deployer.lib.helper.GuiRenderingHelpers;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.logistics.packager.screen.RequesterTabScreen;
 import net.liukrast.deployer.lib.logistics.stockTicker.GenericOrderContained;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -20,7 +20,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 public class EnergyRequesterTabScreen extends RequesterTabScreen<EnergyStack> {
-    private static final ResourceLocation TEXTURE = RepackagedConstants.id("textures/gui/energy_stock_inventory.png");
+    private static final ResourceLocation TEXTURE = Repackaged.CONSTANTS.id("textures/gui/energy_stock_inventory.png");
 
     private int amount;
     public EnergyRequesterTabScreen(RedstoneRequesterMenu container, StockInventoryType<?, EnergyStack, ?> type, GenericOrderContained<EnergyStack> data) {

@@ -2,7 +2,7 @@ package net.liukrast.repackaged.registry;
 
 import com.simibubi.create.foundation.data.SharedProperties;
 import net.liukrast.deployer.lib.logistics.packager.SimplePackagerBlock;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.content.logistics.PackageShelfBlock;
 import net.liukrast.repackaged.content.logistics.PackagerConnectorBlock;
 import net.minecraft.world.item.BlockItem;
@@ -20,8 +20,8 @@ import java.util.Optional;
 public class RepackagedBlocks {
     private RepackagedBlocks() {}
 
-    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(RepackagedConstants.MOD_ID);
-    protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(RepackagedConstants.MOD_ID);
+    private static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Repackaged.CONSTANTS.getModId());
+    protected static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Repackaged.CONSTANTS.getModId());
 
     public static final DeferredBlock<SimplePackagerBlock> FLUID_PACKAGER = BLOCKS.register("fluid_packager", () -> new SimplePackagerBlock(BlockBehaviour.Properties.ofFullCopy(SharedProperties.softMetal())
             .noOcclusion()
@@ -58,7 +58,7 @@ public class RepackagedBlocks {
     static {
         ITEMS.register("fluid_packager", () -> new BlockItem(FLUID_PACKAGER.get(), new Item.Properties()));
         ITEMS.register("battery_charger", () -> new BlockItem(BATTERY_CHARGER.get(), new Item.Properties()));
-        ITEMS.register("package_shelf", () -> RepackagedConstants.wrapWithShiftSummary(new BlockItem(PACKAGE_SHELF.get(), new Item.Properties())));
+        ITEMS.register("package_shelf", () -> Repackaged.CONSTANTS.wrapWithShiftSummary(new BlockItem(PACKAGE_SHELF.get(), new Item.Properties())));
         ITEMS.register("packager_connector", () -> new BlockItem(PACKAGER_CONNECTOR.get(), new Item.Properties()));
     }
 

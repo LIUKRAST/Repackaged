@@ -1,6 +1,6 @@
 package net.liukrast.repackaged.datagen;
 
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.content.logistics.PackagerConnectorBlock;
 import net.liukrast.repackaged.registry.RepackagedBlocks;
 import net.minecraft.core.Direction;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class RepackagedBlockStateProvider extends BlockStateProvider {
     public RepackagedBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, RepackagedConstants.MOD_ID, exFileHelper);
+        super(output, Repackaged.CONSTANTS.getModId(), exFileHelper);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class RepackagedBlockStateProvider extends BlockStateProvider {
         var multi = getMultipartBuilder(RepackagedBlocks.PACKAGER_CONNECTOR.get());
         for(Direction dir : Direction.values()) {
             multi.part()
-                    .modelFile(models().getExistingFile(RepackagedConstants.id("block/packager_connector/block")))
+                    .modelFile(models().getExistingFile(Repackaged.CONSTANTS.id("block/packager_connector/block")))
                     .rotationX(dir == Direction.DOWN ? 180 : dir.getAxis().isHorizontal() ? 90 : 0)
                     .rotationY(dir.getAxis().isVertical() ? 0 : (((int) dir.toYRot()) + 180) % 360)
                     .addModel()
@@ -42,7 +42,7 @@ public class RepackagedBlockStateProvider extends BlockStateProvider {
                 } else if(connections.getAxisDirection() == Direction.AxisDirection.NEGATIVE) rotationY += 180;
                 for(String key : new String[]{"in", "out"}) {
                     var t = multi.part()
-                            .modelFile(models().getExistingFile(RepackagedConstants.id("block/packager_connector/" + key + (barrel ? "_barrel" : ""))))
+                            .modelFile(models().getExistingFile(Repackaged.CONSTANTS.id("block/packager_connector/" + key + (barrel ? "_barrel" : ""))))
                             .rotationX(rotationX % 360)
                             .rotationY(rotationY % 360)
                             .addModel()

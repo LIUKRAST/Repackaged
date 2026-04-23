@@ -14,7 +14,7 @@ import net.liukrast.deployer.lib.logistics.packager.GenericPackagingRequest;
 import net.liukrast.deployer.lib.logistics.packager.StockInventoryType;
 import net.liukrast.deployer.lib.mixin.accessors.PackagerBlockEntityAccessor;
 import net.liukrast.deployer.lib.registry.DeployerDataComponents;
-import net.liukrast.repackaged.RepackagedLang;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedBlockEntityTypes;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.ChatFormatting;
@@ -45,14 +45,14 @@ public class BatteryChargerBlockEntity extends AbstractPackagerBlockEntity<Energ
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        RepackagedLang
+        Repackaged.CONSTANTS
                 .translate("gui.battery_charger.info_header")
                 .forGoggles(tooltip, 0);
-        RepackagedLang
+        Repackaged.CONSTANTS
                 .translate("gui.battery_charger.status")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip, 0);
-        RepackagedLang
+        Repackaged.CONSTANTS
                 .translate(isCharging ? "gui.battery_charger.status.charging" : isUnwrappingEnergy ? "gui.battery_charger.status.discharging" : "gui.battery_charger.status.idle")
                 .style(ChatFormatting.AQUA)
                 .forGoggles(tooltip, 1);
@@ -60,15 +60,15 @@ public class BatteryChargerBlockEntity extends AbstractPackagerBlockEntity<Energ
         IEnergyStorage batteryStorage = getRenderedBox().getCapability(Capabilities.EnergyStorage.ITEM);
         if (batteryStorage == null)
             return true;
-        RepackagedLang
+        Repackaged.CONSTANTS
                 .translate("gui.battery_charger.progress")
                 .style(ChatFormatting.GRAY)
                 .forGoggles(tooltip, 0);
-        RepackagedLang
+        Repackaged.CONSTANTS
                 .text(batteryStorage.getEnergyStored() + "⚡")
                 .style(ChatFormatting.GOLD)
-                .add(RepackagedLang.text("/").style(ChatFormatting.GRAY))
-                .add(RepackagedLang.text(batteryStorage.getMaxEnergyStored() + "⚡").style(ChatFormatting.DARK_GRAY))
+                .add(Repackaged.CONSTANTS.text("/").style(ChatFormatting.GRAY))
+                .add(Repackaged.CONSTANTS.text(batteryStorage.getMaxEnergyStored() + "⚡").style(ChatFormatting.DARK_GRAY))
                 .forGoggles(tooltip, 1);
 
         return true;
@@ -277,7 +277,7 @@ public class BatteryChargerBlockEntity extends AbstractPackagerBlockEntity<Energ
         if(request.isEmpty())
             queuedRequests.removeFirst();
 
-        // 7. Setting the package in queue
+        // 7. Setting the package in the queue
         if(!heldBox.isEmpty()) {
             queuedExitingPackages.add(new BigItemStack(created, 1));
         } else {

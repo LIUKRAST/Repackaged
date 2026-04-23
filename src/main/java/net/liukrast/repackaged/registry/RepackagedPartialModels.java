@@ -1,7 +1,7 @@
 package net.liukrast.repackaged.registry;
 
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 
 public class RepackagedPartialModels {
     private RepackagedPartialModels() {}
@@ -14,7 +14,7 @@ public class RepackagedPartialModels {
 
 
     private static PartialModel block(String path) {
-        return PartialModel.of(RepackagedConstants.id("block/" + path));
+        return PartialModel.of(Repackaged.CONSTANTS.id("block/" + path));
     }
 
     public static void init() {}

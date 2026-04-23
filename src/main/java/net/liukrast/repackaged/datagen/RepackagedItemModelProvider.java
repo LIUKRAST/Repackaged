@@ -1,6 +1,6 @@
 package net.liukrast.repackaged.datagen;
 
-import net.liukrast.repackaged.RepackagedConstants;
+import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -10,7 +10,7 @@ import static net.liukrast.deployer.lib.helper.MinecraftHelpers.ModelProvider.It
 
 public class RepackagedItemModelProvider extends ItemModelProvider {
     public RepackagedItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, RepackagedConstants.MOD_ID, existingFileHelper);
+        super(output, Repackaged.CONSTANTS.getModId(), existingFileHelper);
     }
 
     @Override

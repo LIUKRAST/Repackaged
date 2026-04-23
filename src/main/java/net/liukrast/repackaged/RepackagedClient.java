@@ -21,7 +21,7 @@ import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsE
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 
-@Mod(value = RepackagedConstants.MOD_ID, dist = Dist.CLIENT)
+@Mod(value = "repackaged", dist = Dist.CLIENT)
 public class RepackagedClient {
     public RepackagedClient(IEventBus eventBus, ModContainer container) {
         eventBus.addListener(RepackagedBlockEntityTypes::registerRenderers);

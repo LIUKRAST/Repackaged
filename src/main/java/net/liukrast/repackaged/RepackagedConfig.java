@@ -9,6 +9,10 @@ public class RepackagedConfig {
         private Client() {}
         private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+        public static final ModConfigSpec.BooleanValue PACKAGE_GOGGLE_INFO = BUILDER
+                .comment("Adds a simple goggle overlay on package entities")
+                .define("packageGoggleInformation", true);
+
         static final ModConfigSpec SPEC = BUILDER.build();
     }
 
