@@ -222,7 +222,7 @@ public class EnergyStockInventoryType extends StockInventoryType<Energy, EnergyS
 
         @Override
         public ItemStack getRandomBox() {
-            List<DeferredItem<GenericPackageItem>> pool = STYLE_PICKER.nextInt(RARE_CHANCE) == 0 ? RepackagedItems.RARE_BATTERIES : RepackagedItems.STANDARD_BATTERIES;
+            List<DeferredItem<GenericPackageItem>> pool = !RepackagedItems.RARE_BATTERIES.isEmpty() && STYLE_PICKER.nextInt(RARE_CHANCE) == 0 ? RepackagedItems.RARE_BATTERIES : RepackagedItems.STANDARD_BATTERIES;
             return new ItemStack(pool.get(STYLE_PICKER.nextInt(pool.size())).get());
         }
 

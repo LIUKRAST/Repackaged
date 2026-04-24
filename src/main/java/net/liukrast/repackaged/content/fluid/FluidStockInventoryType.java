@@ -185,7 +185,7 @@ public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStac
 
         @Override
         public ItemStack getRandomBox() {
-            List<DeferredItem<GenericPackageItem>> pool = STYLE_PICKER.nextInt(RARE_CHANCE) == 0 ? RepackagedItems.RARE_BOTTLES : RepackagedItems.STANDARD_BOTTLES;
+            List<DeferredItem<GenericPackageItem>> pool = !RepackagedItems.RARE_BOTTLES.isEmpty() && STYLE_PICKER.nextInt(RARE_CHANCE) == 0 ? RepackagedItems.RARE_BOTTLES : RepackagedItems.STANDARD_BOTTLES;
             return new ItemStack(pool.get(STYLE_PICKER.nextInt(pool.size())).get());
         }
 
