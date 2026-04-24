@@ -172,8 +172,8 @@ public class BatteryChargerBlockEntity extends AbstractPackagerBlockEntity<Energ
             if(heldBox.isEmpty()) attemptToSendSpecial(null);
             else attemptToRedstoneCharge();
         } else {
-            // If player extracts package before it's done extracting, the request is cancelled
-            int toRemove = requestedAmountQueue.size() - queuedExitingPackages.size() + 1;
+            // If player extracts package before it's done extracting, the request is canceled
+            int toRemove = requestedAmountQueue.size() - queuedExitingPackages.size()-1;
             if (toRemove > 0) requestedAmountQueue.subList(0, toRemove).clear();
             attemptToCharge();
         }
