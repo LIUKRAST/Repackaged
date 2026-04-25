@@ -1,2 +1,4 @@
-- Now requires Deployer 0.1.1
-- Moved to the new Constants API module
+Fixes
+- Battery charger sometimes crashes with orders
+- Rare bottles/batteries make server crash
+- Compat manager throws an issue (non fatal)
