@@ -32,7 +32,7 @@ public class RepackagedLanguageProvider extends DeployerLanguageProviderImpl {
         addReplaced("stock_inventory_type.%s.energy", "Energy");
 
         addReplaced("item.%s.battery.brass", "Brass Battery");
-        addReplaced("item.%s.rare_bottle.copper", "Copper Bottle");
+        addReplaced("item.%s.bottle.copper", "Copper Bottle");
         addReplaced("item.%s.rare_bottle.rare_exposed_copper", "Rare Exposed Copper Bottle");
         addReplaced("item.%s.rare_bottle.rare_large_exposed_copper", "Rare Exposed Large Copper Bottle");
         addReplaced("item.%s.rare_bottle.rare_weathered_copper", "Rare Weathered Copper Bottle");

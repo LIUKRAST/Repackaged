@@ -36,8 +36,8 @@ import java.util.List;
 import java.util.Random;
 
 public class FluidStockInventoryType extends StockInventoryType<Fluid, FluidStack, IFluidHandler> {
-    private static final Codec<GenericRequestPromise<FluidStack>> REQUEST_CODEC =  GenericRequestPromise.simpleCodec(FluidStack.CODEC);
-    private static final IValueHandler<Fluid, FluidStack, IFluidHandler> VALUE_HANDLER = new IValueHandler<>(FluidStack.CODEC, FluidStack.STREAM_CODEC) {
+    private static final Codec<GenericRequestPromise<FluidStack>> REQUEST_CODEC =  GenericRequestPromise.simpleCodec(FluidStack.OPTIONAL_CODEC);
+    private static final IValueHandler<Fluid, FluidStack, IFluidHandler> VALUE_HANDLER = new IValueHandler<>(FluidStack.OPTIONAL_CODEC, FluidStack.OPTIONAL_STREAM_CODEC) {
 
         @Override
         public Hash.Strategy<? super FluidStack> hashStrategy() {
