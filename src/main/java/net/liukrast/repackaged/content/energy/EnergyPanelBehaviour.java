@@ -103,5 +103,15 @@ public class EnergyPanelBehaviour extends StockPanelBehaviour<Energy, EnergyStac
     public ItemStack getPromisedBox() {
         return RepackagedItems.STANDARD_BATTERIES.getFirst().toStack();
     }
+
+    @Override
+    public int getScrollStep(boolean ctrl, boolean shift, boolean alt) {
+        return ctrl ? 100 : shift ? 1000 : alt ? 1 : 10;
+    }
+
+    @Override
+    public boolean shouldSnap() {
+        return true;
+    }
 }
 
