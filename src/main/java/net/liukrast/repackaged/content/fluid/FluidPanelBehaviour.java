@@ -9,9 +9,11 @@ import com.simibubi.create.foundation.blockEntity.behaviour.ValueBox;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.createmod.catnip.platform.NeoForgeCatnipServices;
 import net.liukrast.deployer.lib.helper.box.FluidValueBox;
+import net.liukrast.deployer.lib.logistics.IPromiseVisuals;
 import net.liukrast.deployer.lib.logistics.board.PanelType;
 import net.liukrast.deployer.lib.logistics.board.StockPanelBehaviour;
 import net.liukrast.repackaged.registry.RepackagedItems;
+import net.liukrast.repackaged.registry.RepackagedPackageStyles;
 import net.liukrast.repackaged.registry.RepackagedPartialModels;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -27,7 +29,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.fluids.FluidStack;
 
-public class FluidPanelBehaviour extends StockPanelBehaviour<Fluid, FluidStack> {
+public class FluidPanelBehaviour extends StockPanelBehaviour<Fluid, FluidStack> implements IPromiseVisuals {
     private static final Multiplier[] MULTIPLIERS = {
             new Multiplier("mB", 1, 10),
             new Multiplier("B", 1_000),
@@ -93,5 +95,15 @@ public class FluidPanelBehaviour extends StockPanelBehaviour<Fluid, FluidStack> 
     @Override
     public MutableComponent formatValue(ValueSettings value) {
         return super.formatValue(value);
+    }
+
+    @Override
+    public Component getPromisedComponent(int amount) {
+        return filter.getHoverName().copy().append(" x" + amount + "Mb");
+    }
+
+    @Override
+    public ItemStack getPromisedBox() {
+        return RepackagedItems.STANDARD_BOTTLES.getFirst().toStack();
     }
 }
