@@ -64,6 +64,9 @@ public class FluidTabScreen extends StockTabScreen<Fluid, FluidStack> {
     }
 
     @Override
+    protected boolean shouldSnap() { return true; }
+
+    @Override
     public void renderEntry(@NotNull GuiGraphics graphics, int scale, FluidStack entry, boolean isStackHovered, boolean isRenderingOrders) {
         int customCount = entry.getAmount();
         if (!isRenderingOrders) {
