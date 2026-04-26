@@ -6,8 +6,6 @@ import net.createmod.ponder.api.element.ElementLink;
 import net.createmod.ponder.api.element.WorldSectionElement;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
-import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.*;
-
 import net.createmod.ponder.api.scene.Selection;
 import net.liukrast.deployer.lib.helper.ponder.AnimatePartialInstruction;
 import net.liukrast.deployer.lib.helper.ponder.PartialElement;
@@ -19,6 +17,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
+
+import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.*;
 
 public class BatteryChargerPonder implements Ponder {
 

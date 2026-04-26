@@ -17,7 +17,8 @@ import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.SimpleFluidContent;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 
-import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.*;
+import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.displayText;
+import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.simpleInit;
 
 public class StackedPackagersPonder implements Ponder {
 

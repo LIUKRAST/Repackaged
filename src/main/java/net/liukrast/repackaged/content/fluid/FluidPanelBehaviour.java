@@ -13,7 +13,6 @@ import net.liukrast.deployer.lib.logistics.IPromiseVisuals;
 import net.liukrast.deployer.lib.logistics.board.PanelType;
 import net.liukrast.deployer.lib.logistics.board.StockPanelBehaviour;
 import net.liukrast.repackaged.registry.RepackagedItems;
-import net.liukrast.repackaged.registry.RepackagedPackageStyles;
 import net.liukrast.repackaged.registry.RepackagedPartialModels;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
 import net.minecraft.client.renderer.MultiBufferSource;

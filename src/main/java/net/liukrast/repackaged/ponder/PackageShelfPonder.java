@@ -18,9 +18,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicReference;
 
-import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.*;
+import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.displayText;
+import static net.liukrast.deployer.lib.helper.PonderSceneHelpers.simpleInit;
 
 public class PackageShelfPonder implements Ponder {
     @Override

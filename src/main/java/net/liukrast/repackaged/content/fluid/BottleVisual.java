@@ -12,7 +12,6 @@ import dev.engine_room.flywheel.lib.instance.TransformedInstance;
 import net.liukrast.deployer.lib.helper.VisualHelpers;
 import net.liukrast.deployer.lib.helper.client.PackageVisualExtension;
 import net.liukrast.repackaged.registry.RepackagedDataComponents;
-import net.liukrast.repackaged.registry.RepackagedItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.world.inventory.InventoryMenu;
