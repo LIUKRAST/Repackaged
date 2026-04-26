@@ -5,6 +5,7 @@ import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlock;
 import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueBox;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
+import net.liukrast.deployer.lib.logistics.IPromiseVisuals;
 import net.liukrast.deployer.lib.logistics.board.PanelType;
 import net.liukrast.deployer.lib.logistics.board.StockPanelBehaviour;
 import net.liukrast.repackaged.registry.RepackagedItems;
@@ -24,7 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.Optional;
 
-public class EnergyPanelBehaviour extends StockPanelBehaviour<Energy, EnergyStack> {
+public class EnergyPanelBehaviour extends StockPanelBehaviour<Energy, EnergyStack> implements IPromiseVisuals {
     private static final Multiplier[] MULTIPLIERS = {
             new Multiplier("⚡", 1, 10),
             new Multiplier("k⚡", 1_000),
@@ -90,6 +91,17 @@ public class EnergyPanelBehaviour extends StockPanelBehaviour<Energy, EnergyStac
     @Override
     public void reset() {
         this.filter.setAmount(0);
+    }
+
+    @Override
+    public Component getPromisedComponent(int amount) {
+        return Component.translatable("stock_inventory_type.repackaged.energy")
+                .copy().append(" x" + amount + "Mb");
+    }
+
+    @Override
+    public ItemStack getPromisedBox() {
+        return RepackagedItems.STANDARD_BATTERIES.getFirst().toStack();
     }
 }
 
