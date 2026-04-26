@@ -10,15 +10,21 @@ import net.liukrast.deployer.lib.logistics.packager.screen.StockTabScreen;
 import net.liukrast.repackaged.Repackaged;
 import net.liukrast.repackaged.registry.RepackagedItems;
 import net.liukrast.repackaged.registry.RepackagedStockInventoryTypes;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 public class FluidTabScreen extends StockTabScreen<Fluid, FluidStack> {
     private static final ResourceLocation TEXTURE = Repackaged.CONSTANTS.id("textures/gui/fluid_stock_inventory.png");
@@ -27,8 +33,21 @@ public class FluidTabScreen extends StockTabScreen<Fluid, FluidStack> {
     }
 
     @Override
-    public void renderTooltip(@NotNull GuiGraphics guiGraphics, FluidStack fluidStack, int mouseX, int mouseY) {
-        GuiRenderingHelpers.renderTooltip(guiGraphics, fluidStack, mouseX, mouseY, font);
+    public void renderTooltip(@NotNull GuiGraphics graphics, FluidStack fluidStack, int mouseX, int mouseY) {
+        List<Component> tooltip = new ArrayList<>();
+
+        tooltip.add(fluidStack.getHoverName().copy()
+                .append(Component.literal(" x" + fluidStack.getAmount() + "Mb")
+                        .withStyle(ChatFormatting.GRAY)));
+
+        if (Minecraft.getInstance().options.advancedItemTooltips) {
+            ResourceLocation id = BuiltInRegistries.FLUID.getKey(fluidStack.getFluid());
+            if (id != BuiltInRegistries.FLUID.getDefaultKey()) {
+                MutableComponent advancedId = Component.literal(id.toString()).withStyle(ChatFormatting.DARK_GRAY);
+                tooltip.add(advancedId);
+            }
+        }
+        graphics.renderTooltip(font, tooltip, Optional.empty(), mouseX, mouseY);
     }
 
     private FluidStack getOrderForFluid(FluidStack stack, List<FluidStack> itemsToOrder) {
